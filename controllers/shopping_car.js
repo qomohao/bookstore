@@ -12,6 +12,9 @@ const ShoppingCar = {
     add: (req, res, next) => {
         // 书籍id
         // 数量
+        let book_id = req.body.book_id;
+        let count = req.body.count;
+
     },
     // 删除购物车
     delete: (req, res, next) => {

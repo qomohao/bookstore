@@ -8,9 +8,10 @@ const register = {
      */
     index: (req, res, next) => {
         res.render('register', {
-            title:"注册页"
+            title: "注册页"
         });
     },
+    
     /**
      * 注册操作
      */
@@ -24,7 +25,7 @@ const register = {
         let email = req.body.email;
         let nickname = req.body.nickname;
         let password = req.body.password;
-        let password_confirmation = req.body.password_confirmation;
+        let repassword = req.body.repassword;
         UserModel.find({email: email}).then(doc => {
             if (doc) {
                 res.json({
@@ -32,7 +33,7 @@ const register = {
                     msg: '邮箱已被使用'
                 });
             } else {
-                if (password == password_confirmation) {
+                if (password == repassword) {
                     let usermodel = new UserModel({
                         email: email,
                         nickname: nickname,
@@ -40,11 +41,17 @@ const register = {
                     });
                     usermodel.save().then(doc => {
                         res.session.user = doc;
+                        res.json({
+                            status: 1,
+                            msg: '注册成功'
+                        });
+                    }).catch(err => {
+                        res.json({
+                            status: 0,
+                            msg: '网络异常'
+                        });
                     });
-                    res.json({
-                        status: 1,
-                        msg: '注册成功'
-                    });
+
                 }
                 else {
                     res.json({

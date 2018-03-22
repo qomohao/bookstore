@@ -27,12 +27,15 @@ const login = {
                 let user = doc;
                 if (user.password == md5(password)) {
                     res.session.user = user;
-                    res.redirect('/');
+                    res.json({
+                        status: 1,
+                        msg: '登录成功'
+                    });
                 } else {
                     res.json({
                         status: 0,
                         msg: '密码错误'
-                    })
+                    });
                 }
             } else {
                 res.json({
