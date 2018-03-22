@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/recommend.css">
 </head>
 <body>
+<div class="wrap-all">
 <!--头部导航开始-->
 <%-include nav.ejs %>
 <!--头部导航结束-->
@@ -286,14 +287,16 @@
         </div>
     </div>
 </div>
-
+<div class="push-footer"></div>
+</div>
 
 <!--底部-->
 <%-include bottom.ejs%>
 
-<script src="./lib/jquery/jquery.min.js"></script>
-<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="./lib/layer/layer.js"></script>
-<script src="./js/index.js"></script>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/lib/layer/layer.js"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/index.js"></script>
 </body>
 </html>

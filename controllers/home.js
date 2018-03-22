@@ -96,8 +96,8 @@ const Home = {
 
         const newestCount = BookModel.find(where).count();
         const newestFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort({create_at: 'desc'}); //推荐
-        Promise.all([newestCount, newestFun]).then(([countdata, newestData]) => {
-            count = countdata;
+        Promise.all([newestCount, newestFun]).then(([countData, newestData]) => {
+            count = countData;
             totalPage = Math.ceil(count / limit);
             res.render("newest", {
                 title: "最新上架",
@@ -121,6 +121,10 @@ const Home = {
         //分类列表
         //分类书籍（分页，销量，评分，时间）
 
+<<<<<<< HEAD
+=======
+        const categoryFirst = yield CategoryModel.findOne({});
+>>>>>>> b079e1ad208c57f72f2c4610ff9ed89f61cce77e
         let id = req.query.id;
         // 通过query判断 1.销量排行 2.价格排行
         let order_cnt = req.query.order_cnt;
@@ -146,17 +150,30 @@ const Home = {
         if (score) {
             sort.score = -1;
         }
+<<<<<<< HEAD
         const category = CategoryModel.find({category:{$ne:[]}}).populate("category");
         const newestCount = BookModel.find(where).count();
         const newestFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort(sort); //推荐
         Promise.all([category, newestCount, newestFun]).then(([categoryData, countdata, newestData]) => {
             count = countdata;
+=======
+
+        const category = CategoryModel.find();
+        const BookCount = BookModel.find(where).count();
+        const BookFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort(sort); //推荐
+        Promise.all([category, BookCount, BookFun]).then(([categoryData, countData, BookData]) => {
+            count = countData;
+>>>>>>> b079e1ad208c57f72f2c4610ff9ed89f61cce77e
             totalPage = Math.ceil(count / limit);
             res.render("category",
                 {
                     title: "分类",
                     category: categoryData,
+<<<<<<< HEAD
                     newest: newestData,
+=======
+                    newest: BookData,
+>>>>>>> b079e1ad208c57f72f2c4610ff9ed89f61cce77e
                     totalPage: totalPage,
                     page: page,
                     count: count
@@ -200,8 +217,12 @@ const Home = {
                     ranking: rankData,
                     totalPage: totalPage,
                     page: page,
+<<<<<<< HEAD
                     count: count,
                     query:query
+=======
+                    count: count
+>>>>>>> b079e1ad208c57f72f2c4610ff9ed89f61cce77e
                 });
         }).catch(reject => {
             res.json({
@@ -246,4 +267,7 @@ const Home = {
         });
     }
 }
+
+
+
 module.exports = Home;

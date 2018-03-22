@@ -1,11 +1,27 @@
 html {
     min-width: 1300px;
+    height: 100%;
 }
 
 body {
     min-width: 1300px;
+    height: 100%;
 }
-.container{
+
+.wrap-all {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -180px;
+    /*margin-bottom的负值等于footer高度*/
+}
+
+.push-footer {
+    height: 180px;
+    clear: both;
+}
+
+.container {
     min-width: 1170px;
 }
 
