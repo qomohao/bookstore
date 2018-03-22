@@ -7,6 +7,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
+const UserModel = require('./user');
+const BookModel = require('./book');
+const OrderModel = require('./order');
 const EvaluationSchema = new Schema({
     user_id: {
         type: ObjectId,

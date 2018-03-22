@@ -24,7 +24,7 @@ const Home = {
         const newest = BookModel.find().populate('author_id').limit(new_limit).sort(sort); //最新
 
         Promise.all([slide, recommend, ad, newest]).then(([slideData, recommendData, adData, newestData]) => {
-            res.render("index",{
+            res.render("index", {
                 title: "主页",
                 slide: slideData,
                 recommend: recommendData,
@@ -61,7 +61,7 @@ const Home = {
         Promise.all([recommendCount, recommendFun]).then(([countData, recommendData]) => {
             count = countData;
             totalPage = Math.ceil(count / limit);
-            res.render("recommend",{
+            res.render("recommend", {
                 title: "推荐好书",
                 recommend: recommendData,
                 totalPage: totalPage,
@@ -92,10 +92,10 @@ const Home = {
 
         const newestCount = BookModel.find(where).count();
         const newestFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort({create_at: 'desc'}); //推荐
-        Promise.all([newestCount, newestFun]).then(([countdata, newestData]) => {
-            count = countdata;
+        Promise.all([newestCount, newestFun]).then(([countData, newestData]) => {
+            count = countData;
             totalPage = Math.ceil(count / limit);
-            res.render("newest",{
+            res.render("newest", {
                 title: "最新上架",
                 newest: newestData,
                 totalPage: totalPage,
@@ -116,6 +116,8 @@ const Home = {
     category: (req, res, next) => {
         //分类列表
         //分类书籍（分页，销量，评分，时间）
+
+        const categoryFirst = yield CategoryModel.findOne({});
         let id = req.query.id;
         let order_cnt = req.query.order_cnt;
         let price = req.query.price;
@@ -140,20 +142,20 @@ const Home = {
         }
 
         const category = CategoryModel.find();
-        const newestCount = BookModel.find(where).count();
-        const newestFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort(sort); //推荐
-        Promise.all([category, newestCount, newestFun]).then(([categoryData, countdata, newestData]) => {
-            count = countdata;
+        const BookCount = BookModel.find(where).count();
+        const BookFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort(sort); //推荐
+        Promise.all([category, BookCount, BookFun]).then(([categoryData, countData, BookData]) => {
+            count = countData;
             totalPage = Math.ceil(count / limit);
             res.render("category",
                 {
                     title: "分类",
-                category: categoryData,
-                newest: newestData,
-                totalPage: totalPage,
-                page: page,
-                count: count
-            });
+                    category: categoryData,
+                    newest: BookData,
+                    totalPage: totalPage,
+                    page: page,
+                    count: count
+                });
         }).catch(reject => {
             res.json({
                 status: 0,
@@ -186,11 +188,11 @@ const Home = {
             res.render("rank",
                 {
                     title: "排行榜",
-                ranking: rankData,
-                totalPage: totalPage,
-                page: page,
-                count: count
-            });
+                    ranking: rankData,
+                    totalPage: totalPage,
+                    page: page,
+                    count: count
+                });
         }).catch(reject => {
             res.json({
                 status: 0,
@@ -234,4 +236,7 @@ const Home = {
         });
     }
 }
+
+
+
 module.exports = Home;

@@ -7,14 +7,30 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
+const UserModel = require('./user');
+const BookModel = require('./book');
 const ShoppingcarSchema = new Schema({
-    user_id:{
+    user_id: {
         type: ObjectId,
         ref: 'User'
     },
-    order_id: {
-        type: ObjectId,
-        ref: 'Order'
+    book: [
+        {
+            book_id: {
+                type: ObjectId,
+                ref: 'Book'
+            },
+            num: Number,
+            total_price: Number
+        }
+    ],
+    total_price: {
+        type: Number,
+        default: 0
+    },
+    status: {
+        type: Number,
+        default: 0
     },
     create_at: {
         type: Date,
