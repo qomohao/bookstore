@@ -11,5 +11,7 @@ router.get('/login',login.index);
 router.get('/register',register.index);
 // 个人中心
 router.get('/personal', personal.index);
+// 登录认证
+router.post('/login', login.login);
 
 module.exports = router;

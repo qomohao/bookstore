@@ -2,6 +2,9 @@
 @import "nav.css";
 @import "rankAside.css";
 @import "footer.css";
+@import "./box/bootstrap-grid.min.css";
+@import "./box/box.css";
+@import "./box/font-awesome.min.css";
 
 /*轮播图开始*/
 .bs-lunbo {

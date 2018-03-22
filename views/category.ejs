@@ -5,13 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%=title%></title>
+    <title><%= title %></title>
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./css/category.css">
 </head>
 <body>
 <!--头部导航开始-->
-<%-include nav.ejs %>
+<%- include nav.ejs %>
 <!--头部导航结束-->
 
 <div class="container bs-wrap">
@@ -19,70 +19,16 @@
         <div class="col-md-3">
             <ul class="category-tab list-unstyled">
                 <li>图书分类</li>
+                <% for(var i = 0;i < category.length;i++){ %>
                 <li class="active">
-                    <button href="">畅销小说</button>
+                    <button style="color: #000;"><%= category[i].name %></button>
                     <ul class="list-unstyled">
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
+                        <%for(var j=0;j<category[i].category.length;j++){%>
+                        <li><a href="/category?pname=<%= category[i].name %>&cname=<%= category[i].category[j].name %>"><%= category[i].category[j].name %></a></li>
+                        <% } %>
                     </ul>
                 </li>
-                <li>
-                    <button href="">时尚生活</button>
-                    <ul class="list-unstyled">
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <button href="">畅销小说</button>
-                    <ul class="list-unstyled">
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <button href="">时尚生活</button>
-                    <ul class="list-unstyled">
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <button href="">畅销小说</button>
-                    <ul class="list-unstyled">
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <button href="">时尚生活</button>
-                    <ul class="list-unstyled">
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <button href="">畅销小说</button>
-                    <ul class="list-unstyled">
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <button href="">时尚生活</button>
-                    <ul class="list-unstyled">
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                        <li><a href="">畅销小说</a></li>
-                    </ul>
-                </li>
+                <% } %>
             </ul>
         </div>
 
@@ -90,19 +36,25 @@
             <div class="category-con-header">
                 <p>当前所在位置:
                     <span>&gt;</span>
-                    <a>融智教育</a>
+                    <a>在线书城</a>
                     <span>&gt;</span>
                     <a>分类</a>
+                    <span>&gt;</span>
+                    <a>父分类</a>
+                    <span>&gt;</span>
+                    <a>子分类</a>
                 </p>
             </div>
             <div class="category-con-con">
                 <div class="panel panel-default">
                     <div class="panel-heading content-full">
-                        <a href="">销量</a>
-                        <a href="">价格</a>
+                        <a href="/">销量 ↓</a>
+                        <a href="">价格 ↑</a>
                     </div>
                     <div class="panel-body">
                         <ul class="product-newest-group list-unstyled row content-full">
+                            <!--书籍列表-->
+                            <% for(var i = 0;i < category.length;i++){ %>
                             <li class="product-newest-item col-md-2">
                                 <div class="thumbnail">
                                     <img src="./images/65465465.jpg" alt="...">
@@ -113,236 +65,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
-                            </li>
+                            <% } %>
                         </ul>
                         <div class="bs-page text-center">
                             <a class="btn btn-default">共有3页</a>
@@ -363,7 +86,7 @@
 
 
 <!--底部-->
-<%-include bottom.ejs%>
+<%- include bottom.ejs %>
 
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
