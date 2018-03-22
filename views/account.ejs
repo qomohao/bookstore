@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/account.css">
+</head>
+<body>
+<!--头部导航开始-->
+<%-include nav.ejs %>
+<!--头部导航结束-->
+
+
+<div class="container bs-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="car-header">
+                <p>当前所在位置:
+                    <span>&gt;</span>
+                    <a href="/">在线书城</a>
+                    <span>&gt;</span>
+                    <span>提交订单</span>
+                </p>
+            </div>
+
+            <div class="car-wrap content-full">
+                <div class="address-con content-full">
+                    <div class="pull-left">
+                        <h4>确认收货地址</h4>
+                    </div>
+                    <div class="pull-right">
+                        <a href="">管理收货地址</a>
+                    </div>
+                </div>
+                <div class="address-info content-full">
+                    <div class="form-group pull-left">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" value="option1" checked>
+                                河南省郑州市王牛牛收
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" value="option1" checked>
+                                河南省郑州市王牛牛收
+                            </label>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <p class="moren"><a href="">默认地址</a></p>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 全选
+                                </label>
+                            </div>
+                        </td>
+                        <td>购买信息</td>
+                        <td>单价</td>
+                        <td>数量</td>
+                        <td>小计</td>
+                        <td>操作</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                </label>
+                            </div>
+                        </td>
+                        <td>
+                            <img src="/images/54654654.jpg" alt="">
+                            <p>小道德方寸之间</p>
+                        </td>
+                        <td>￥0.00</td>
+                        <td>
+                            <div class="input-group">
+                              <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">+</button>
+                              </span>
+                                <input type="text" maxlength="3" class="form-control" placeholder="1">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">-</button>
+                              </span>
+                            </div>
+                        </td>
+                        <td>￥0.00</td>
+                        <td>删除</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 全选
+                                </label>
+                            </div>
+                        </td>
+                        <td> 删除选中图书</td>
+                        <td></td>
+                        <td></td>
+                        <td>共3本，合计3.00元</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <div class="pull-right">
+                    <a href="/shopping/clean">
+                    <button type="button" class="btn btn-danger">提交订单</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--底部-->
+<%-include bottom.ejs%>
+
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/lib/layer/layer.js"></script>
+<script src="/js/shoppingcar.js"></script>
+</body>
+</html>

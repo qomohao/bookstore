@@ -11,20 +11,26 @@ const clean = {
         //书籍ID （数组）
         //书籍数量（数组）
         //用户地址
-		let book_id_arr = req.query.book_id_arr;
-        let user = req.session.user;
-
-
-        UserModel.find({user:user._id}).then(doc=>{
-            res.render('index',{
-                result:doc,
+        res.render("clean",
+            {
+                title: "确认支付",
+                // result:doc,
             })
-        }).catch(err=>{
-            res.json({
-                status: 0,
-                msg: 'err'
-            })
-        })
+        // let book_id_arr = req.query.book_id_arr;
+        // let user = req.session.user;
+        //
+        // UserModel.find({user:user._id}).then(doc=>{
+        //     res.render("clean",
+        //         {
+        //         title: "确认支付",
+        //         result:doc,
+        //     })
+        // }).catch(err=>{
+        //     res.json({
+        //         status: 0,
+        //         msg: 'err'
+        //     })
+        // })
     }
 }
 module.exports = clean

@@ -7,7 +7,9 @@ const register = {
      * 注册页面
      */
     index: (req, res, next) => {
-        res.render('register', {});
+        res.render('register', {
+            title:"注册页"
+        });
     },
     /**
      * 注册操作

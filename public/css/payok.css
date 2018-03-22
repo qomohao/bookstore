@@ -1,0 +1,66 @@
+@import "base.css";
+@import "nav.css";
+@import "footer.css";
+
+.pay {
+    margin-top: 30px;
+    padding: 5px 20px 25px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+.pay ul > li:first-child {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.pay .pay-type + .pay-type {
+    margin-left: 50px;
+
+}
+
+.pay .pay-type-gruop {
+    margin-bottom: 20px;
+}
+
+.pay .radio input {
+    vertical-align: middle;
+    margin-top: 8px;
+    height: 30px;
+}
+
+.pay .radio img {
+
+    padding: 5px 20px;
+    border: 1px solid #ccc;
+}
+
+.bs-wrap {
+    padding-top: 30px;
+}
+
+.car-header {
+    margin-bottom: 20px;
+}
+
+.car-header p {
+    margin-bottom: 0px;
+}
+
+.car-header p a {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.car-header p a:last-child {
+    color: #999;
+
+}
+
+.car-wrap {
+    margin-bottom: 50px;
+}
+
+

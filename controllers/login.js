@@ -8,7 +8,10 @@ const login = {
      * 登录页面
      */
     index: (req, res, next) => {
-        res.render('login', {});
+        res.render("login",
+            {
+                title: "登录",
+            });
     },
     /**
      * 登录

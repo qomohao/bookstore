@@ -1,0 +1,229 @@
+@import "base.css";
+@import "nav.css";
+@import "rankAside.css";
+@import "footer.css";
+
+.bs-wrap {
+    padding-top: 30px;
+}
+
+.details-header {
+    margin-bottom: 20px;
+}
+
+.details-header p {
+    margin-bottom: 0px;
+}
+
+.details-header p a {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.details-header p a:last-child {
+    color: #999;
+
+}
+
+.details-meta {
+    margin-bottom: 30px;
+}
+
+.details-content > .col-md-3 > img {
+    width: 100%;
+    height: auto;
+}
+
+.book-info > li {
+    color: #999;
+    line-height: 25px;
+    font-size: 12px;
+}
+
+.book-info > li > h4 {
+    color: #333;
+}
+
+.book-info > li > span {
+    color: #333;
+}
+
+.book-info > li > .count-input {
+    padding-top: 10px;
+    display: block;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.book-info > li > .count-input input {
+    outline: none;
+    border: 1px solid #ccc;
+    width: 70px;
+    height: 50px;
+    font-size: 22px;
+    line-height: 50px;
+    padding: 0 22px;
+}
+
+.book-info > li > .count-input a {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    background-color: #ccc;
+    border: 1px solid #888;
+    text-align: center;
+    text-decoration: none;
+    line-height: 25px;
+    font-size: 22px;
+    color: #333;
+}
+
+.book-info > li > .count-input a:last-child {
+    top: 35px;
+    border-top: none;
+}
+
+.details-content .book-info > li:last-child .btn + .btn {
+    margin-left: 15px;
+}
+
+.book-int > div {
+    margin-bottom: 30px;
+}
+
+.book-int .book-int-header {
+    border-bottom: 1px solid #ccc;
+}
+
+.book-int .book-int-header h3 {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    border-bottom: 2px solid #E2393C;
+    width: 110px;
+    font-weight: 600;
+}
+
+.book-int > div > div {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.book-int > div > div > h4 {
+    font-size: 16px;
+    padding-left: 10px;
+    font-weight: 600;
+    border-left: 3px solid #E2393C;
+}
+
+.book-int > .book-int-int {
+    margin-bottom: 30px;
+}
+
+.book-int > .book-int-int > p {
+    font-size: 14px;
+    color: #666;
+    text-indent: 2em;
+    margin-bottom: 0;
+}
+
+.book-int-info {
+
+}
+
+.book-int-info > ul > li {
+    border-bottom: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #999;
+}
+
+.book-int-info > ul > li > span + span {
+    color: #333;
+}
+
+.book-int-author > p {
+    font-size: 14px;
+    color: #666;
+    text-indent: 2em;
+    margin-bottom: 0;
+}
+
+.evaluation-list {
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+.evaluation-list .evaluation-item {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.evaluation-list .evaluation-item .evaluation-item-header {
+    margin-bottom: 10px;
+}
+
+.evaluation-list .evaluation-item .evaluation-item-header span {
+    display: block;
+    float: left;
+}
+
+.evaluation-list .evaluation-item .evaluation-item-header span + span {
+    margin-left: 60px;
+    color: #E2393C;
+}
+
+.evaluation-list .evaluation-item .evaluation-item-left {
+
+}
+
+.evaluation-list .evaluation-item .evaluation-item-left img {
+    border-radius: 50%;
+    display: block;
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+.evaluation-list .evaluation-item .evaluation-item-left > div {
+    float: left;
+    padding: 5px 25px;
+}
+
+.evaluation-list .evaluation-item .evaluation-item-left > div span {
+    display: block;
+    line-height: 40px;
+}
+
+.evaluation-list .evaluation-item .evaluation-item-left > div span + span {
+    line-height: 25px;
+}
+
+.evaluation-list .evaluation-item .evaluation-item-right  {
+   padding-top: 10px;
+}
+
+/*分页按钮*/
+.bs-page {
+    padding-top: 50px;
+    margin-bottom: 100px;
+}
+
+.bs-page .btn {
+    border-radius: 0;
+    padding: 10px 20px;
+    color: #666;
+}
+
+.bs-page .btn:hover {
+    background-color: #EF6668;
+    color: #fff;
+    border: 1px solid #EF6668;
+}
+
+

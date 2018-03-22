@@ -24,7 +24,8 @@ const Home = {
         const newest = BookModel.find().populate('author_id').limit(new_limit).sort(sort); //最新
 
         Promise.all([slide, recommend, ad, newest]).then(([slideData, recommendData, adData, newestData]) => {
-            res.json({
+            res.render("index",{
+                title: "主页",
                 slide: slideData,
                 recommend: recommendData,
                 ad: adData,
@@ -60,7 +61,8 @@ const Home = {
         Promise.all([recommendCount, recommendFun]).then(([countData, recommendData]) => {
             count = countData;
             totalPage = Math.ceil(count / limit);
-            res.json({
+            res.render("recommend",{
+                title: "推荐好书",
                 recommend: recommendData,
                 totalPage: totalPage,
                 page: page,
@@ -77,7 +79,7 @@ const Home = {
     /**
      * 新书
      */
-    news: (req, res, next) => {
+    newest: (req, res, next) => {
         //书籍列表（分页，畅销/新书）
 
         //书籍列表（分页）
@@ -93,7 +95,8 @@ const Home = {
         Promise.all([newestCount, newestFun]).then(([countdata, newestData]) => {
             count = countdata;
             totalPage = Math.ceil(count / limit);
-            res.json({
+            res.render("newest",{
+                title: "最新上架",
                 newest: newestData,
                 totalPage: totalPage,
                 page: page,
@@ -142,7 +145,9 @@ const Home = {
         Promise.all([category, newestCount, newestFun]).then(([categoryData, countdata, newestData]) => {
             count = countdata;
             totalPage = Math.ceil(count / limit);
-            res.json({
+            res.render("category",
+                {
+                    title: "分类",
                 category: categoryData,
                 newest: newestData,
                 totalPage: totalPage,
@@ -178,7 +183,9 @@ const Home = {
         Promise.all([rankCount, rankFun]).then(([countdata, rankData]) => {
             count = countdata;
             totalPage = Math.ceil(count / limit);
-            res.json({
+            res.render("rank",
+                {
+                    title: "排行榜",
                 ranking: rankData,
                 totalPage: totalPage,
                 page: page,

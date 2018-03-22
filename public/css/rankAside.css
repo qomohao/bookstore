@@ -1,0 +1,156 @@
+.bs-aside {
+    margin-bottom: 50px;
+}
+
+.bs-aside .aside-header {
+    font-size: 22px;
+    line-height: 26px;
+    margin: 0 0 5px 0;
+}
+
+.bs-aside .product-tab {
+    border: 1px solid #ccc;
+    border-top: none;
+
+}
+
+.bs-aside .product-tab .nav-tabs {
+    border: none;
+    margin-bottom: 10px;
+}
+
+.bs-aside .product-tab .nav-tabs li {
+    margin: 0;
+    width: 50%;
+    text-align: center;
+    padding-top: 13px;
+    border-top: 1px solid #ccc;
+    border-radius: 0;
+}
+
+.bs-aside .product-tab .nav-tabs li a {
+    color: #333;
+    font-size: 18px;
+    line-height: 26px;
+    text-decoration: none;
+    border: none;
+    border-radius: 0;
+    padding: 0 15px;
+}
+
+.bs-aside .product-tab .nav-tabs li + li a {
+    border-left: 2px solid #ccc;
+}
+
+.bs-aside .product-tab .nav-tabs > li > a:hover,
+.bs-aside .product-tab .nav-tabs > li > a:focus {
+    color: #555;
+    background-color: #fff;
+
+}
+
+.bs-aside .product-tab .nav-tabs > .active {
+    padding-top: 0;
+    border-top: 4px solid #E86C62;
+    border-radius: 0;
+    padding-top: 10px;
+
+}
+
+.bs-aside .product-tab .nav-tabs > li.active > a,
+.bs-aside .product-tab .nav-tabs > li.active > a:hover,
+.bs-aside .product-tab .nav-tabs > li.active > a:focus {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+
+}
+
+.bs-aside .product-tab .tab-content .pane-group {
+    margin: 0;
+    padding: 0;
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-item {
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-item > a {
+    padding: 20px 0 10px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-item > a:hover {
+    background-color: #FBF9FA;
+
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-item > a > p {
+    display: block;
+    float: left;
+    padding: 0 5px;
+    margin: 0;
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-item .pane-no {
+    color: #333;
+    line-height: 44px;
+    font-size: 22px;
+    padding-left: 10px;
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-item:first-child .pane-no,
+.bs-aside .product-tab .tab-content .pane-group .pane-item:nth-child(2) .pane-no,
+.bs-aside .product-tab .tab-content .pane-group .pane-item:nth-child(3) .pane-no {
+    color: #F64E72;
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-item .pane-content {
+    line-height: 22px;
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-item .pane-content span {
+    display: block;
+    color: #999;
+
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-item .pane-content span:first-child {
+    color: #333;
+
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-item .pane-price {
+    float: right;
+    padding-right: 20px;
+    font-size: 16px;
+    color: #F64E72;
+    line-height: 44px;
+    text-align: left;
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-full-link {
+
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-full-link span {
+    display: block;
+    float: right;
+    font-size: 16px;
+    text-align: center;
+}
+
+.bs-aside .product-tab .tab-content .pane-group .pane-full-link span a {
+    display: block;
+    float: right;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #999;
+    padding: 20px 10px;
+}

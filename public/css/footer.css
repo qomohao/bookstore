@@ -1,0 +1,48 @@
+/*底部*/
+.bs-footer {
+    background-color: #3C3C3C;
+    color: #aaa;
+    text-align: center;
+    padding: 20px 0 10px;
+    color: #666;
+    width: 100%;
+    clear: both;
+}
+
+.bs-footer .footer-link ul {
+    margin: 0;
+    padding: 15px 0;
+}
+
+.bs-footer .footer-link ul li {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+}
+
+.bs-footer .footer-link ul li + li::before {
+    content: "|";
+    padding: 0 13px 0 10px;
+    font-size: 14px;
+}
+
+.bs-footer .footer-link ul li a {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    text-decoration: none;
+    color: #aaa;
+}
+
+.bs-footer .footer-link ul li a:hover {
+    color: #aaa;
+}
+
+.bs-footer .footer-contact {
+    padding: 10px 0;
+    background-color: #292929;
+}
+
+.bs-footer .footer-copyright {
+    padding: 15px 0;
+}

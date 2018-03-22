@@ -1,0 +1,142 @@
+.bs-nav {
+    border-bottom: 1px solid #ccc;
+}
+
+.bs-nav .navbar-default {
+    border: none;
+    margin: 0;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.bs-nav .navbar-default .container {
+    background-color: #fff;
+}
+
+.bs-nav .navbar-default .container::after {
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    clear: both;
+}
+
+.bs-nav .navbar-default .container a {
+    padding: 30px 20px;
+
+}
+
+.bs-nav .navbar-default .container .navbar-header {
+    background-color: #fff;
+}
+
+.bs-nav .navbar-default .container .navbar-header .navbar-toggle {
+    margin: 23px;
+}
+
+.bs-nav .navbar-default .container .navbar-header .navbar-brand {
+    padding: 0 15px;
+    height: 80px;
+
+}
+
+.bs-nav .navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover, .bs-nav .navbar-default .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #fff;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse {
+    background-color: #fff;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .nav-main-link li a {
+
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .nav-main-link li a:hover,
+.bs-nav .navbar-default .container .navbar-collapse .nav-main-link li a:active {
+    color: #fff;
+    background-color:#EE6668;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .nav-main-link .active a {
+    color: #fff;
+    background-color: #EE6668;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .navbar-form {
+    padding: 20px 20px;
+    margin: 0;
+    line-height: 30px;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .navbar-form .input-group {
+    position: relative;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .navbar-form .input-group input {
+    width: 260px;
+    height: 40px;
+    padding-right: 50px;
+    border-radius: 30px;
+    background-color: #eee;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .navbar-form .input-group input:active,
+.bs-nav .navbar-default .container .navbar-collapse .navbar-form .input-group input:focus {
+    border: none;
+    outline: none;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .navbar-form .input-group .nav-search-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    padding-right: 10px;
+    color: #999;
+    padding-top: 7px;
+    padding-bottom: 3px;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .navbar-form .input-group .nav-search-btn i {
+    border-left: 2px solid #bbb;
+    padding-left: 10px;
+    line-height: 22px;
+    text-align: center;
+    padding-right: 5px;
+    cursor: pointer;
+    color: #bbb;
+
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .nav-lr-link {
+    background-color: #fff;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .nav-lr-link .breadcrumb {
+    background-color: #fff;
+    margin-bottom: 0;
+    padding: 25px 20px;
+    line-height: 30px;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .nav-lr-link .breadcrumb li a {
+    padding: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .nav-lr-link .breadcrumb li a:hover,
+.bs-nav .navbar-default .container .navbar-collapse .nav-lr-link .breadcrumb li a:active {
+    text-decoration: none;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .nav-bs-car {
+    font-size: 14px;
+}

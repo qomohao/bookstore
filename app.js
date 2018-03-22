@@ -14,8 +14,12 @@ global.use = use;
 const db = require('./bootstarp/database');
 
 //路由引入
-var index = require('./routes/index');
-var users = require('./routes/users');
+// 主页
+var home = require('./routes/home');
+// 用户
+var user=require("./routes/user");
+// 购物
+var shopping=require("./routes/shopping");
 
 //实例化对象
 var app = express();
@@ -32,8 +36,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //使用路由
-app.use('/', index);
-app.use('/users', users);
+app.use('/', home);
+app.use('/user', user);
+app.use('/shopping', shopping);
 
 // 404处理
 app.use(function (req, res, next) {

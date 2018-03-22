@@ -1,0 +1,30 @@
+html {
+    min-width: 1300px;
+}
+
+body {
+    min-width: 1300px;
+}
+.container{
+    min-width: 1170px;
+}
+
+.content-full::before {
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    clear: both;
+}
+
+.content-full::after {
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    clear: both;
+}
+
+a {
+    text-decoration: none;
+}

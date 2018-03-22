@@ -1,0 +1,71 @@
+<!--个人中心-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/personal.css">
+
+</head>
+<body>
+
+<!--导航栏-->
+<%- include ../nav %>
+<div class="container ">
+    <div id="personalContent" class="row" style="margin-top: 10px;">
+        <div class="tab-content col-md-9 col-xs-9 row" id="position">
+            当前所在位置 ><a href="/">在线书城</a> > <a href="/user/personal">个人中心</a>
+        </div>
+        <!--侧边栏-->
+        <% include ./bigTab/bigTab.ejs %>
+        <!--内容-->
+        <div class="tab-content col-md-9 col-xs-9 ">
+            <div role="tabpanel" class="tab-pane active" id="collect">
+                <!--我的收藏-->
+                <% include personalLike.ejs %>
+            </div>
+            <div role="tabpanel" class="tab-pane " id="indent">
+                <!--订单分类-->
+                <% include ./orderTab/orderTab.ejs %>
+                <% include ./orderTab/orderDetails.ejs %>
+            </div>
+            <!--个人信息设置-->
+            <div role="tabpanel" class="tab-pane " id="setting">
+                <!--修改个人信息-->
+                <% include personalInfo.ejs %>
+            </div>
+            <!--隐私设置-->
+            <div role="tabpanel" class="tab-pane " id="privacy">
+                <!--密码修改-->
+                <% include personalPrivacy.ejs %>
+            </div>
+            <!--收货地址-->
+            <div role="tabpanel" class="tab-pane " id="address">
+                <!--收货地址-->
+                <% include personalAddress.ejs %>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--底部-->
+<%-include ../bottom.ejs%>
+</body>
+</html>
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    function showDetail(index) {
+        $("#showContent").hide();
+        $("#detailUl li").eq(index).show().siblings().hide();
+    }
+    function showTable() {
+        $("#showContent").show();
+        $("#detailUl li").hide();
+    }
+</script>

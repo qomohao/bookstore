@@ -1,0 +1,133 @@
+@import "base.css";
+@import "nav.css";
+@import "rankAside.css";
+@import "footer.css";
+
+/*推荐好书*/
+.bs-wrap {
+    padding-top: 30px;
+}
+
+.bs-main {
+}
+
+.product-list {
+    margin-bottom: 30px;
+}
+
+.product-list .product-list-header {
+    border-bottom: 2px solid #ccc;
+
+}
+
+.product-list .product-list-header h3 {
+    margin: 0px 0 5px 0;
+    font-size: 22px;
+    line-height: 26px;
+}
+
+.product-list .product-list-header div {
+    margin: 0px 0 5px 0;
+}
+
+.product-list .product-list-header div a {
+    line-height: 26px;
+    font-size: 15px;
+    color: #555;
+    text-decoration: none;
+}
+
+.product-list .product-list-content {
+
+}
+
+.product-list .product-list-content .product-list-group {
+    margin-bottom: 0;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item {
+    padding-top: 30px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #ccc;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item .media .media-body .media-name {
+    font-size: 17px;
+    line-height: 40px;
+    margin-bottom: 0;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item .media .media-body .media-meta {
+    line-height: 35px;
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 0;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item .media .media-body .media-meta > span + span {
+    color: #F64E72;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item .media .media-body .media-contnet {
+    line-height: 30px;
+    font-size: 16px;
+    color: #666;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item .media .media-body .media-body-right {
+    text-align: center;
+    padding-top: 44px;
+    padding-bottom: 45px;
+    margin: 0;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item .media .media-body .media-body-right a {
+    display: block;
+    float: left;
+    width: 50%;
+    color: #999;
+    text-decoration: none;
+    position: relative;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item .media .media-body .media-body-right a + a:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    height: 70%;
+    width: 2px;
+    background-color: #ccc;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item .media .media-body .media-body-right a i {
+    display: block;
+    font-size: 34px;
+    line-height: 50px;
+    color: #F26164;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item .media .media-body .media-body-right a span {
+    display: block;
+    font-size: 15px;
+}
+
+.bs-page {
+    padding-top: 50px;
+    margin-bottom: 100px;
+}
+
+.bs-page .btn {
+    border-radius: 0;
+    padding: 10px 20px;
+    color: #666;
+}
+
+.bs-page .btn:hover {
+    background-color: #EF6668;
+    color: #fff;
+    border: 1px solid #EF6668;
+}
+
+
