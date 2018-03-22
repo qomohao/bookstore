@@ -11,23 +11,18 @@ const Home = {
      * 主页
      */
     index: (req, res, next) => {
-        // 推荐
         let rec_limit = 4;
-        // 新书
         let new_limit = 18;
-        // 查找条件
         let where = {};
         where.is_tui = 1;
-        // 排序
         let sort = {};
-        // 倒叙
         sort.create_at = -1;
 
         const slide = SlideModel.find();//幻灯
         const recommend = BookModel.find(where).populate('author_id').limit(rec_limit); //推荐
         const ad = AdModel.find();//广告
         const newest = BookModel.find().populate('author_id').limit(new_limit).sort(sort); //最新
-        // 导入 -- 结构
+
         Promise.all([slide, recommend, ad, newest]).then(([slideData, recommendData, adData, newestData]) => {
             res.render("index", {
                 title: "主页",
@@ -50,6 +45,7 @@ const Home = {
      */
     recommend: (req, res, next) => {
         //书籍列表（分页）
+
         //分页查询
         let count = 0;
         let limit = 12;
@@ -120,60 +116,35 @@ const Home = {
     category: (req, res, next) => {
         //分类列表
         //分类书籍（分页，销量，评分，时间）
-
-<<<<<<< HEAD
-=======
-        const categoryFirst = yield CategoryModel.findOne({});
->>>>>>> b079e1ad208c57f72f2c4610ff9ed89f61cce77e
-        let id = req.query.id;
-        // 通过query判断 1.销量排行 2.价格排行
+        let category_id = req.query.category_id;
         let order_cnt = req.query.order_cnt;
-        // 判断销量排行
         let price = req.query.price;
-        // 判断价格排行
-        let score = req.query.score;
         let count = 0;
         let limit = 12;
         let page = req.query.page ? req.query.page : 1;
         let totalPage = 0;
         let where = {};
         let sort = {};
-        if (id) {
-            where.category_id = id;
+        if (category_id) {
+            where.category_id = category_id;
         }
         if (order_cnt) {
             sort.order_cnt = -1;
         }
         if (price) {
-            sort.price = 'desc';
+            sort.price = 1;
         }
-        if (score) {
-            sort.score = -1;
-        }
-<<<<<<< HEAD
-        const category = CategoryModel.find({category:{$ne:[]}}).populate("category");
-        const newestCount = BookModel.find(where).count();
-        const newestFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort(sort); //推荐
-        Promise.all([category, newestCount, newestFun]).then(([categoryData, countdata, newestData]) => {
-            count = countdata;
-=======
-
-        const category = CategoryModel.find();
+        const categoryFun = CategoryModel.find({category: {$ne: []}}).populate('category');
         const BookCount = BookModel.find(where).count();
         const BookFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort(sort); //推荐
-        Promise.all([category, BookCount, BookFun]).then(([categoryData, countData, BookData]) => {
+        Promise.all([categoryFun, BookCount, BookFun]).then(([categoryData, countData, BookData]) => {
             count = countData;
->>>>>>> b079e1ad208c57f72f2c4610ff9ed89f61cce77e
             totalPage = Math.ceil(count / limit);
             res.render("category",
                 {
                     title: "分类",
                     category: categoryData,
-<<<<<<< HEAD
-                    newest: newestData,
-=======
-                    newest: BookData,
->>>>>>> b079e1ad208c57f72f2c4610ff9ed89f61cce77e
+                    BookData: BookData,
                     totalPage: totalPage,
                     page: page,
                     count: count
@@ -192,18 +163,14 @@ const Home = {
     ranking: (req, res, next) => {
 
         //书籍列表（分页，畅销/新书）
-        // 判断新书排行
-        let query = req.query.order_cnt;
         let create_at = req.query.create_at;
         let count = 0;
         let limit = 12;
         let page = req.query.page ? req.query.page : 1;
         let totalPage = 0;
         let sort = {};
-        // 畅销排行 -- 默认显示畅销排行
         sort.order_cnt = -1
         if (create_at) {
-            // 新书排行
             sort.create_at = -1;
         }
         const rankCount = BookModel.find().count();
@@ -217,12 +184,7 @@ const Home = {
                     ranking: rankData,
                     totalPage: totalPage,
                     page: page,
-<<<<<<< HEAD
-                    count: count,
-                    query:query
-=======
                     count: count
->>>>>>> b079e1ad208c57f72f2c4610ff9ed89f61cce77e
                 });
         }).catch(reject => {
             res.json({
@@ -267,7 +229,6 @@ const Home = {
         });
     }
 }
-
 
 
 module.exports = Home;

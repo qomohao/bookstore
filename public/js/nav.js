@@ -10,6 +10,7 @@ $(document).ready(function () {
             $nav_main_link[i].parentNode.classList.remove("active");
         }
     }
+
 });
 
 
