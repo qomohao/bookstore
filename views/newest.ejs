@@ -10,42 +10,8 @@
     <link rel="stylesheet" href="./css/recommend.css">
 </head>
 <body>
-<<<<<<< HEAD
 <!--头部导航开始-->
-<%-include nav.ejs %>
-<!--头部导航结束-->
-<div class="container bs-wrap">
-    <div class="row">
-        <div class="col-md-9">
-            <div class="bs-main">
-                <div class="product-list content-full">
-                    <div class="product-list-header content-full">
-                        <h3 class="pull-left">最新上架</h3>
-                    </div>
-                    <!--新书上架-->
-                    <div class="product-list-content content-full">
-                        <ul class="product-list-group list-unstyled row content-full">
-                            <%for(var i=0;i<newest.length;i++){%>
-                            <li class="product-list-item col-md-12">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object" src="./images/65465465.jpg" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="media-body row">
-                                        <div class="col-md-8">
-                                            <h4 class="media-name"><%=newest[i].name%></h4>
-                                            <p class="media-meta"><span><%=newest[i].author_id.name%></span><span>￥<%=newest[i].price%></span></p>
-                                            <p class="media-contnet"><%=newest[i].content%></p>
-                                        </div>
-                                        <div class="col-md-4 media-body-right content-full">
-                                            <a href=""><i
-                                                        class="glyphicon glyphicon-copyright-mark"></i><span>加入购物车</span></a>
-                                            <a href=""><i class="glyphicon glyphicon-heart"></i><span>我的收藏</span></a>
-=======
 <div class="wrap-all">
-    <!--头部导航开始-->
     <%- include nav.ejs %>
     <!--头部导航结束-->
     <div class="container bs-wrap">
@@ -56,8 +22,10 @@
                         <div class="product-list-header content-full">
                             <h3 class="pull-left">最新上架</h3>
                         </div>
+                        <!--新书上架-->
                         <div class="product-list-content content-full">
                             <ul class="product-list-group list-unstyled row content-full">
+                                <% for(var i = 0;i < newest.length;i++){ %>
                                 <li class="product-list-item col-md-12">
                                     <div class="media">
                                         <div class="media-left">
@@ -67,186 +35,62 @@
                                         </div>
                                         <div class="media-body row">
                                             <div class="col-md-8">
-                                                <h4 class="media-name">这是一本好书</h4>
-                                                <p class="media-meta"><span>本书</span><span>￥14.00</span></p>
-                                                <p class="media-contnet">
-                                                    本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书</p>
+                                                <h4 class="media-name"><%= newest[i].name %></h4>
+                                                <p class="media-meta"><span><%= newest[i].author_id.name %></span><span>￥<%= newest[i].price %></span>
+                                                </p>
+                                                <p class="media-contnet"><%= newest[i].content %></p>
                                             </div>
                                             <div class="col-md-4 media-body-right content-full">
                                                 <a href=""><i
                                                             class="glyphicon glyphicon-copyright-mark"></i><span>加入购物车</span></a>
                                                 <a href=""><i
                                                             class="glyphicon glyphicon-heart"></i><span>我的收藏</span></a>
+
+
                                             </div>
+
 
                                         </div>
                                     </div>
+
+
                                 </li>
-                                <li class="product-list-item col-md-12">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <img class="media-object" src="./images/65465465.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body row">
-                                            <div class="col-md-8">
-                                                <h4 class="media-name">这是一本好书</h4>
-                                                <p class="media-meta"><span>本书</span><span>￥14.00</span></p>
-                                                <p class="media-contnet">
-                                                    本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书</p>
-                                            </div>
-                                            <div class="col-md-4 media-body-right content-full">
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-copyright-mark"></i><span>加入购物车</span></a>
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-heart"></i><span>我的收藏</span></a>
-                                            </div>
+                                <% } %>
+                            </ul>
 
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-list-item col-md-12">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <img class="media-object" src="./images/65465465.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body row">
-                                            <div class="col-md-8">
-                                                <h4 class="media-name">这是一本好书</h4>
-                                                <p class="media-meta"><span>本书</span><span>￥14.00</span></p>
-                                                <p class="media-contnet">
-                                                    本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书</p>
-                                            </div>
-                                            <div class="col-md-4 media-body-right content-full">
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-copyright-mark"></i><span>加入购物车</span></a>
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-heart"></i><span>我的收藏</span></a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-list-item col-md-12">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <img class="media-object" src="./images/65465465.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body row">
-                                            <div class="col-md-8">
-                                                <h4 class="media-name">这是一本好书</h4>
-                                                <p class="media-meta"><span>本书</span><span>￥14.00</span></p>
-                                                <p class="media-contnet">
-                                                    本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书</p>
-                                            </div>
-                                            <div class="col-md-4 media-body-right content-full">
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-copyright-mark"></i><span>加入购物车</span></a>
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-heart"></i><span>我的收藏</span></a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-list-item col-md-12">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <img class="media-object" src="./images/65465465.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body row">
-                                            <div class="col-md-8">
-                                                <h4 class="media-name">这是一本好书</h4>
-                                                <p class="media-meta"><span>本书</span><span>￥14.00</span></p>
-                                                <p class="media-contnet">
-                                                    本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书</p>
-                                            </div>
-                                            <div class="col-md-4 media-body-right content-full">
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-copyright-mark"></i><span>加入购物车</span></a>
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-heart"></i><span>我的收藏</span></a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-list-item col-md-12">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <img class="media-object" src="./images/65465465.jpg" alt="...">
-                                            </a>
-                                        </div>
-                                        <div class="media-body row">
-                                            <div class="col-md-8">
-                                                <h4 class="media-name">这是一本好书</h4>
-                                                <p class="media-meta"><span>本书</span><span>￥14.00</span></p>
-                                                <p class="media-contnet">
-                                                    本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书</p>
-                                            </div>
-                                            <div class="col-md-4 media-body-right content-full">
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-copyright-mark"></i><span>加入购物车</span></a>
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-heart"></i><span>我的收藏</span></a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-list-item col-md-12">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#">
-                                                <img class="media-object" src="./images/65465465.jpg" alt="...">
-                                            </a>
->>>>>>> b079e1ad208c57f72f2c4610ff9ed89f61cce77e
-                                        </div>
-                                        <div class="media-body row">
-                                            <div class="col-md-8">
-                                                <h4 class="media-name">这是一本好书</h4>
-                                                <p class="media-meta"><span>本书</span><span>￥14.00</span></p>
-                                                <p class="media-contnet">
-                                                    本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书本书</p>
-                                            </div>
-                                            <div class="col-md-4 media-body-right content-full">
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-copyright-mark"></i><span>加入购物车</span></a>
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-heart"></i><span>我的收藏</span></a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-<<<<<<< HEAD
-                                </div>
                             </li>
-                            <%}%>
-                        </ul>
-=======
-                                </li>
                             </ul>
                         </div>
                     </div>
+
+
+                    <!--分页开始-->
+                    <% if(pageInfo.totalPage > 1) { %>
                     <div class="bs-page text-center">
-                        <a class="btn btn-default">共有3页</a>
-                        <a class="btn btn-default">首页</a>
-                        <a class="btn btn-default">上一页</a>
-                        <a class="btn btn-default">1</a>
-                        <a class="btn btn-default">2</a>
-                        <a class="btn btn-default">3</a>
-                        <a class="btn btn-default">下一页</a>
-                        <a class="btn btn-default">尾页</a>
->>>>>>> b079e1ad208c57f72f2c4610ff9ed89f61cce77e
+                        <a class="btn btn-default" href="javascript:;">共有<%= pageInfo.totalPage %>页</a>
+                        <a class="btn btn-default"
+                           href="/newest?page=1">首页</a>
+                        <% if (pageInfo.page != 1) { %>
+                        <a class="btn btn-default"
+                           href="/newest?page=<%= pageInfo.page - 1 %>">上一页</a>
+                        <% } %>
+                        <a class="btn btn-default active"
+                           href="/newest?page=<%= pageInfo.page %>"><%= pageInfo.page %></a>
+                        <% if (pageInfo.page <= pageInfo.totalPage - 1 ){ %>
+                        <a class="btn btn-default"
+                           href="/newest?page=<%= parseInt(pageInfo.page) + 1 %>"><%= parseInt(pageInfo.page) + 1 %></a>
+                        <% } if (pageInfo.page <= pageInfo.totalPage - 2)  { %>
+                        <a class="btn btn-default"
+                           href="/newest?page=<%= parseInt(pageInfo.page) + 2 %>"><%= parseInt(pageInfo.page) + 2 %></a>
+                        <% }if(pageInfo.page < pageInfo.totalPage) { %>
+                        <a class="btn btn-default"
+                           href="/newest?page=<%= parseInt(pageInfo.page) + 1 %>">下一页</a>
+                        <% } %>
+                        <a class="btn btn-default"
+                           href="/newest?page=<%= pageInfo.totalPage %>">尾页</a>
                     </div>
+                    <% } %>
+                    <!--分页结束-->
                 </div>
             </div>
 

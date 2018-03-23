@@ -86,16 +86,33 @@
                             </ul>
                         </div>
                     </div>
+                    <!--分页开始-->
+                    <% if(pageInfo.totalPage > 1) { %>
                     <div class="bs-page text-center">
-                        <a class="btn btn-default">共有3页</a>
-                        <a class="btn btn-default">首页</a>
-                        <a class="btn btn-default">上一页</a>
-                        <a class="btn btn-default">1</a>
-                        <a class="btn btn-default">2</a>
-                        <a class="btn btn-default">3</a>
-                        <a class="btn btn-default">下一页</a>
-                        <a class="btn btn-default">尾页</a>
+                        <a class="btn btn-default" href="javascript:;">共有<%= pageInfo.totalPage %>页</a>
+                        <a class="btn btn-default"
+                           href="/rank?current=<%= current %>&page=1">首页</a>
+                        <% if (pageInfo.page != 1) { %>
+                        <a class="btn btn-default"
+                           href="/rank?current=<%= current %>&page=<%= pageInfo.page - 1 %>">上一页</a>
+                        <% } %>
+                        <a class="btn btn-default active"
+                           href="/rank?current=<%= current %>&page=<%= pageInfo.page %>"><%= pageInfo.page %></a>
+                        <% if (pageInfo.page <= pageInfo.totalPage - 1 ){ %>
+                        <a class="btn btn-default"
+                           href="/rank?current=<%= current %>&page=<%= parseInt(pageInfo.page) + 1 %>"><%= parseInt(pageInfo.page) + 1 %></a>
+                        <% } if (pageInfo.page <= pageInfo.totalPage - 2)  { %>
+                        <a class="btn btn-default"
+                           href="/rank?current=<%= current %>&page=<%= parseInt(pageInfo.page) + 2 %>"><%= parseInt(pageInfo.page) + 2 %></a>
+                        <% }if(pageInfo.page < pageInfo.totalPage) { %>
+                        <a class="btn btn-default"
+                           href="/rank?current=<%= current %>&page=<%= parseInt(pageInfo.page) + 1 %>">下一页</a>
+                        <% } %>
+                        <a class="btn btn-default"
+                           href="/rank?current=<%= current %>&page=<%= pageInfo.totalPage %>">尾页</a>
                     </div>
+                    <% } %>
+                    <!--分页结束-->
                 </div>
             </div>
         </div>

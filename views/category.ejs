@@ -81,7 +81,7 @@
                                 <% } %>
                             </ul>
 
-                            //分页
+                            <!--分页开始-->
                             <% if(pageInfo.totalPage > 1) { %>
                             <div class="bs-page text-center">
                                 <a class="btn btn-default" href="javascript:;">共有<%= pageInfo.totalPage %>页</a>
@@ -108,6 +108,8 @@
                                    href="/category?pname=<%= pageInfo.pname %>&cname=<%= pageInfo.cname %>&cid=<%= pageInfo.cid %>&order_cnt=<%= pageInfo.order_cnt %>&price=<%= pageInfo.price %>&page=<%= pageInfo.totalPage %>">尾页</a>
                             </div>
                             <% } %>
+                            <!--分页结束-->
+
                         </div>
                     </div>
                 </div>

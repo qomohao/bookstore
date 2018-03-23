@@ -53,6 +53,7 @@ const Home = {
         let totalPage = 0;
         let where = {};
         let sort = {};
+        let pageInfo = {page: page};
         where.is_tui = 1;
         sort.create_at = -1;
 
@@ -61,12 +62,12 @@ const Home = {
         Promise.all([recommendCount, recommendFun]).then(([countData, recommendData]) => {
             count = countData;
             totalPage = Math.ceil(count / limit);
+            pageInfo.count = count;
+            pageInfo.totalPage = totalPage;
             res.render("recommend", {
                 title: "推荐好书",
                 recommend: recommendData,
-                totalPage: totalPage,
-                page: page,
-                count: count
+                pageInfo: pageInfo
             });
         }).catch(reject => {
             res.json({
@@ -89,18 +90,19 @@ const Home = {
         let totalPage = 0;
         let where = {};
         where.is_tui = 1;
+        let pageInfo = {page: page};
 
         const newestCount = BookModel.find(where).count();
         const newestFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort({create_at: 'desc'}); //推荐
         Promise.all([newestCount, newestFun]).then(([countData, newestData]) => {
             count = countData;
             totalPage = Math.ceil(count / limit);
+            pageInfo.count = count;
+            pageInfo.totalPage = totalPage;
             res.render("newest", {
                 title: "最新上架",
                 newest: newestData,
-                totalPage: totalPage,
-                page: page,
-                count: count
+                pageInfo: pageInfo
             });
         }).catch(reject => {
             res.json({
@@ -131,7 +133,7 @@ const Home = {
         let totalPage = 0;
         let where = {};
         let sort = {};
-        let categoryData = [];
+
         let pageInfo = {page: page, order_cnt: order_cnt, price: price}
         if (pname && cname && cid) {
             pageInfo.pname = pname;
@@ -181,6 +183,7 @@ const Home = {
         let limit = 12;
         let page = req.query.page ? req.query.page : 1;
         let totalPage = 0;
+        let pageInfo = {page: page}
         let sort = {};
         if (!current) {
             current = '畅销榜'
@@ -197,13 +200,13 @@ const Home = {
         Promise.all([rankCount, rankFun]).then(([countdata, rankData]) => {
             count = countdata;
             totalPage = Math.ceil(count / limit);
+            pageInfo.count = count;
+            pageInfo.totalPage = totalPage;
             res.render("rank",
                 {
                     title: "排行榜",
                     ranking: rankData,
-                    totalPage: totalPage,
-                    page: page,
-                    count: count,
+                    pageInfo: pageInfo,
                     current: current
                 });
         }).catch(reject => {
