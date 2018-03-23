@@ -183,7 +183,7 @@ const Home = {
         let limit = 12;
         let page = req.query.page ? req.query.page : 1;
         let totalPage = 0;
-        let pageInfo = {page: page}
+        let pageInfo = {page: page};
         let sort = {};
         if (!current) {
             current = '畅销榜'
@@ -223,26 +223,31 @@ const Home = {
     search: (req, res, next) => {
         //书籍列表(分页)
         let key = req.query.key;
+        let page = req.query.page ? req.query.page : 1;
+        let current;
         let count = 0;
         let limit = 12;
-        let page = req.query.page ? req.query.page : 1;
         let totalPage = 0;
+        let pageInfo = {page: page};
         let where = {};
         let sort = {};
         if (key) {
-            where.key = key;
+            where.name = {$regex: key};
+            pageInfo.key = key;
         }
         sort.create_at = 1;
         const searchCount = BookModel.find(where).count();
-        const searchFun = BookModel.find(where).skip((page - 1) * limit).limit(limit).sort(sort); //推荐
+        const searchFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort(sort); //推荐
         Promise.all([searchCount, searchFun]).then(([countdata, searchData]) => {
             count = countdata;
             totalPage = Math.ceil(count / limit);
-            res.json({
+            pageInfo.count = count;
+            pageInfo.totalPage = totalPage;
+            res.render('search', {
+                title: "书籍搜索",
                 search: searchData,
-                totalPage: totalPage,
-                page: page,
-                count: count
+                current: current,
+                pageInfo: pageInfo
             });
         }).catch(reject => {
             res.json({

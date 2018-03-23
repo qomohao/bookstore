@@ -1,0 +1,61 @@
+<div class="bs-aside">
+    <h3 class="aside-header">排行榜</h3>
+    <div class="product-tab">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#tab-pane-bestseller" aria-controls="tab-pane-bestseller" role="tab"
+                   data-toggle="tab">畅销榜</a>
+            </li>
+            <li role="presentation">
+                <a href="#tab-pane-newest" aria-controls="tab-pane-newest" role="tab"
+                   data-toggle="tab">新书榜</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <!--畅销榜-->
+            <div role="tabpanel" class="tab-pane fade in active" id="tab-pane-bestseller">
+                <ul class="list-unstyled pane-group">
+                        <% for(var i = 0; i < locals.order_cnt.length; i++){ %>
+                    <li class="pane-item">
+                        <a class="content-full">
+                            <p class="pane-no"><%= i + 1 %></p>
+                            <p class="pane-content">
+                                <span><%= locals.order_cnt[i].name %></span>
+                                <span><%= locals.order_cnt[i].author_id.name %></span>
+                            </p>
+                            <p class="pane-price">￥<%= locals.order_cnt[i].price %></p>
+                        </a>
+                    </li>
+                    <% } %>
+
+                    <li class="pane-full-link content-full">
+                        <span><a href="/rank?current=畅销榜">查看完整榜单 > ></a></span>
+                    </li>
+                </ul>
+            </div>
+            <!--新书榜-->
+            <div role="tabpanel" class="tab-pane fade" id="tab-pane-newest">
+                <ul class="list-unstyled pane-group">
+
+                    <% for(var i = 0;i < locals.newest.length;i++){ %>
+                    <li class="pane-item">
+                        <a class="content-full">
+                            <p class="pane-no"><%= i + 1 %></p>
+                            <p class="pane-content">
+                                <span><%= locals.newest[i].name %></span>
+                                <span><%= locals.newest[i].author_id.name %></span>
+                            </p>
+                            <p class="pane-price">￥<%= locals.newest[i].price %></p>
+                        </a>
+                    </li>
+                    <% } %>
+
+                    <li class="pane-full-link content-full">
+                        <span><a href="/rank?current=新书榜">查看完整榜单 > ></a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

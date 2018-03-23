@@ -95,6 +95,7 @@
     float: left;
     padding: 0 5px;
     margin: 0;
+
 }
 
 .bs-aside .product-tab .tab-content .pane-group .pane-item .pane-no {
@@ -112,6 +113,8 @@
 
 .bs-aside .product-tab .tab-content .pane-group .pane-item .pane-content {
     line-height: 22px;
+    width: 54%;
+
 }
 
 .bs-aside .product-tab .tab-content .pane-group .pane-item .pane-content span {
@@ -122,6 +125,11 @@
 
 .bs-aside .product-tab .tab-content .pane-group .pane-item .pane-content span:first-child {
     color: #333;
+    height: 22px;
+    overflow: hidden;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
 }
 

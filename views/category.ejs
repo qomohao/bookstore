@@ -43,11 +43,11 @@
                         <a href="/">在线书城</a>
                         <span>&gt;</span>
                         <a href="/category">图书分类</a>
-                        <% if(pageInfo.panme){ %>
+                        <% if(pageInfo.pname){ %>
                         <span>&gt;</span>
-                        <a><%= pname %></a>
+                        <a><%= pageInfo.pname %></a>
                         <span>&gt;</span>
-                        <a><%= cname %></a>
+                        <a><%= pageInfo.cname %></a>
                         <% } %>
                     </p>
                 </div>

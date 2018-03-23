@@ -104,7 +104,17 @@
     padding-bottom: 3px;
 }
 
-.bs-nav .navbar-default .container .navbar-collapse .navbar-form .input-group .nav-search-btn i {
+.bs-nav .navbar-default .container .navbar-collapse .navbar-form .input-group .nav-search-btn button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.bs-nav .navbar-default .container .navbar-collapse .navbar-form .input-group .nav-search-btn button i {
     border-left: 2px solid #bbb;
     padding-left: 10px;
     line-height: 22px;

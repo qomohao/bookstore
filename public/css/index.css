@@ -2,9 +2,6 @@
 @import "nav.css";
 @import "rankAside.css";
 @import "footer.css";
-@import "./box/bootstrap-grid.min.css";
-@import "./box/box.css";
-@import "./box/font-awesome.min.css";
 
 /*轮播图开始*/
 .bs-lunbo {
@@ -63,6 +60,11 @@
     font-size: 17px;
     line-height: 40px;
     margin-bottom: 0;
+    height: 40px;
+    width: 258px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .product-rec .product-rec-content .product-rec-group .product-rec-item .media .media-body .media-author {
@@ -74,10 +76,17 @@
 }
 
 .product-rec .product-rec-content .product-rec-group .product-rec-item .media .media-body .media-contnet {
-    height: 50px;
+    width: 258px;
     line-height: 25px;
     font-size: 12px;
     color: #999;
+    /*显示两行多余的部分省略号显示*/
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .product-rec .product-rec-content .product-rec-group .product-rec-item .media .media-body .media-footer button {
@@ -149,6 +158,14 @@
     font-size: 14px;
     margin: 0;
     line-height: 22px;
+    /*显示两行多余的部分省略号显示*/
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+
 }
 
 .product-newest .product-newest-content .product-newest-group .product-newest-item .thumbnail .caption .thumbnail-autor {
@@ -156,6 +173,13 @@
     font-size: 12px;
     color: #999;
     line-height: 22px;
+    /*显示两行多余的部分省略号显示*/
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 
 }
 

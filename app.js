@@ -5,6 +5,8 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const flash = require('connect-flash');
 const use = require('./bootstarp/use');
 
 //全局设置
@@ -17,9 +19,9 @@ const db = require('./bootstarp/database');
 // 主页
 var home = require('./routes/home');
 // 用户
-var user=require("./routes/user");
+var user = require("./routes/user");
 // 购物
-var shopping=require("./routes/shopping");
+var shopping = require("./routes/shopping");
 
 //实例化对象
 var app = express();
@@ -35,6 +37,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    secret: 'keyboard cat', //一个String类型的字符串，作为服务器端生成session的签名
+    resave: true, //(是否允许)当客户端并行发送多个请求时，其中一个请求在另一个请求结束时对session进行修改覆盖并保存。
+    saveUninitialized: true //初始化session时是否保存到存储
+}))
+app.use(flash());
+
 //使用路由
 app.use('/', home);
 app.use('/user', user);
