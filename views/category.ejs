@@ -15,6 +15,7 @@
     <%- include nav.ejs %>
     <!--头部导航结束-->
 
+
     <div class="container bs-wrap">
         <div class="row">
             <div class="col-md-3">
@@ -41,22 +42,27 @@
                         <span>&gt;</span>
                         <a href="/">在线书城</a>
                         <span>&gt;</span>
-                        <a>分类</a>
+                        <a href="/category">图书分类</a>
+                        <% if(pageInfo.panme){ %>
                         <span>&gt;</span>
                         <a><%= pname %></a>
                         <span>&gt;</span>
                         <a><%= cname %></a>
+                        <% } %>
                     </p>
                 </div>
                 <div class="category-con-con">
                     <div class="panel panel-default">
                         <div class="panel-heading content-full">
-                            <a data-pname="<%= pname %>" data-cname="<%= cname %>" data-cid="<%= cid %>"
-                               data-order_cnt="<%= order_cnt %>"
+                            <a data-pname="<%= pageInfo.pname %>" data-cname="<%= pageInfo.cname %>"
+                               data-cid="<%= pageInfo.cid %>"
+                               data-order_cnt="<%= pageInfo.order_cnt %>" data-price="<%= pageInfo.price %>"
                                id="order_cnt_sort">销量
                                 ↓</a>
-                            <a data-pname="<%= pname %>" data-cname="<%= cname %>" data-cid="<%= cid %>"
-                               data-price="<%= price %>" id="price_sort">价格 ↑</a>
+                            <a data-pname="<%= pageInfo.pname %>" data-cname="<%= pageInfo.cname %>"
+                               data-cid="<%= pageInfo.cid %>"
+                               data-price="<%= pageInfo.price %>" data-order_cnt="<%= pageInfo.order_cnt %>"
+                               id="price_sort">价格 ↑</a>
                         </div>
                         <div class="panel-body">
                             <ul class="product-newest-group list-unstyled row content-full">
@@ -74,17 +80,32 @@
                                 </li>
                                 <% } %>
                             </ul>
-                            <% if(totalPage > 1) { %>
+
+                            //分页
+                            <% if(pageInfo.totalPage > 1) { %>
                             <div class="bs-page text-center">
-                                <a class="btn btn-default" href="javascript:;">共有<%= totalPage %>页</a>
+                                <a class="btn btn-default" href="javascript:;">共有<%= pageInfo.totalPage %>页</a>
                                 <a class="btn btn-default"
-                                   href="/category?pname=<%= pname %>&cname=<%= cname %>&cid=<%= cid %>&price=<%= price %>&page=1">首页</a>
-                                <a class="btn btn-default">上一页</a>
-                                <a class="btn btn-default">1</a>
-                                <a class="btn btn-default">2</a>
-                                <a class="btn btn-default">3</a>
-                                <a class="btn btn-default">下一页</a>
-                                <a class="btn btn-default">尾页</a>
+                                   href="/category?pname=<%= pageInfo.pname %>&cname=<%= pageInfo.cname %>&cid=<%= pageInfo.cid %>&order_cnt=<%= pageInfo.order_cnt %>&price=<%= pageInfo.price %>&page=1">首页</a>
+                                <% if (pageInfo.page != 1) { %>
+                                <a class="btn btn-default"
+                                   href="/category?pname=<%= pageInfo.pname %>&cname=<%= pageInfo.cname %>&cid=<%= pageInfo.cid %>&order_cnt=<%= pageInfo.order_cnt %>&price=<%= pageInfo.price %>&page=<%= pageInfo.page - 1 %>">上一页</a>
+                                <% } %>
+                                <a class="btn btn-default active"
+                                   href="/category?pname=<%= pageInfo.pname %>&cname=<%= pageInfo.cname %>&cid=<%= pageInfo.cid %>&order_cnt=<%= pageInfo.order_cnt %>&price=<%= pageInfo.price %>&page=<%= pageInfo.page %>"><%= pageInfo.page %></a>
+
+                                <% if (pageInfo.page <= pageInfo.totalPage - 1 ){ %>
+                                <a class="btn btn-default"
+                                   href="/category?pname=<%= pageInfo.pname %>&cname=<%= pageInfo.cname %>&cid=<%= pageInfo.cid %>&order_cnt=<%= pageInfo.order_cnt %>&price=<%= pageInfo.price %>&page=<%= parseInt(pageInfo.page) + 1 %>"><%= parseInt(pageInfo.page) + 1 %></a>
+                                <% } if (pageInfo.page <= pageInfo.totalPage - 2)  { %>
+                                <a class="btn btn-default"
+                                   href="/category?pname=<%= pageInfo.pname %>&cname=<%= pageInfo.cname %>&cid=<%= pageInfo.cid %>&order_cnt=<%= pageInfo.order_cnt %>&price=<%= pageInfo.price %>&page=<%= parseInt(pageInfo.page) + 2 %>"><%= parseInt(pageInfo.page) + 2 %></a>
+                                <% }if(pageInfo.page < pageInfo.totalPage) { %>
+                                <a class="btn btn-default"
+                                   href="/category?pname=<%= pageInfo.pname %>&cname=<%= pageInfo.cname %>&cid=<%= pageInfo.cid %>&order_cnt=<%= pageInfo.order_cnt %>&price=<%= pageInfo.price %>&page=<%= parseInt(pageInfo.page) + 1 %>">下一页</a>
+                                <% } %>
+                                <a class="btn btn-default"
+                                   href="/category?pname=<%= pageInfo.pname %>&cname=<%= pageInfo.cname %>&cid=<%= pageInfo.cid %>&order_cnt=<%= pageInfo.order_cnt %>&price=<%= pageInfo.price %>&page=<%= pageInfo.totalPage %>">尾页</a>
                             </div>
                             <% } %>
                         </div>
@@ -104,5 +125,6 @@
 <script src="/lib/layer/layer.js"></script>
 <script src="/js/nav.js"></script>
 <script src="/js/category.js"></script>
+
 </body>
 </html>

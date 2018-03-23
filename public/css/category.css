@@ -122,6 +122,7 @@
     float: left;
     color: #333;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .category-con-con > .panel > .panel-heading a+a {
