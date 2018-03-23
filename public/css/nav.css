@@ -153,3 +153,9 @@
 .bs-nav .navbar-default .container .navbar-collapse li.active a:hover {
     color: #EF6668;
 }
+
+.bs-nav .navbar-default .container .navbar-collapse .nav-main-link li.active a:hover,
+.bs-nav .navbar-default .container .navbar-collapse .nav-main-link li.active a:active {
+    color: #fff;
+    background-color: #EE6668;
+}

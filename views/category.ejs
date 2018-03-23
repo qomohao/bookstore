@@ -11,80 +11,89 @@
 </head>
 <body>
 <div class="wrap-all">
-<!--头部导航开始-->
-<%- include nav.ejs %>
-<!--头部导航结束-->
+    <!--头部导航开始-->
+    <%- include nav.ejs %>
+    <!--头部导航结束-->
 
-<div class="container bs-wrap">
-    <div class="row">
-        <div class="col-md-3">
-            <ul class="category-tab list-unstyled">
-                <li>图书分类</li>
-                <% for(var i = 0;i < category.length;i++){ %>
-                <li class="active">
-                    <button style="color: #000;"><%= category[i].name %></button>
-                    <ul class="list-unstyled">
-                        <%for(var j=0;j<category[i].category.length;j++){%>
-                        <li><a href="/category?pname=<%= category[i].name %>&cname=<%= category[i].category[j].name %>"><%= category[i].category[j].name %></a></li>
-                        <% } %>
-                    </ul>
-                </li>
-                <% } %>
-            </ul>
-        </div>
-
-        <div class="col-md-9">
-            <div class="category-con-header">
-                <p>当前所在位置:
-                    <span>&gt;</span>
-                    <a>在线书城</a>
-                    <span>&gt;</span>
-                    <a>分类</a>
-                    <span>&gt;</span>
-                    <a>父分类</a>
-                    <span>&gt;</span>
-                    <a>子分类</a>
-                </p>
-            </div>
-            <div class="category-con-con">
-                <div class="panel panel-default">
-                    <div class="panel-heading content-full">
-                        <a href="/">销量 ↓</a>
-                        <a href="">价格 ↑</a>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="product-newest-group list-unstyled row content-full">
-                            <!--书籍列表-->
-                            <% for(var i = 0;i < category.length;i++){ %>
-                            <li class="product-newest-item col-md-2">
-                                <div class="thumbnail">
-                                    <img src="./images/65465465.jpg" alt="...">
-                                    <div class="caption">
-                                        <h4 class="thumbnail-name">百家小集</h4>
-                                        <span class="thumbnail-autor">刘振飞</span>
-                                        <span class="thumbnail-price">￥14.00</span>
-                                    </div>
-                                </div>
+    <div class="container bs-wrap">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="category-tab list-unstyled">
+                    <li>图书分类</li>
+                    <% for(var i = 0;i < category.length;i++){ %>
+                    <li class="active">
+                        <button style="color: #000;"><%= category[i].name %></button>
+                        <ul class="list-unstyled">
+                            <% for(var j = 0;j < category[i].category.length;j++){ %>
+                            <li>
+                                <a href="/category?pname=<%= category[i].name %>&cname=<%= category[i].category[j].name %>&cid=<%= category[i].category[j]._id %>"><%= category[i].category[j].name %></a>
                             </li>
                             <% } %>
                         </ul>
-                        <div class="bs-page text-center">
-                            <a class="btn btn-default">共有3页</a>
-                            <a class="btn btn-default">首页</a>
-                            <a class="btn btn-default">上一页</a>
-                            <a class="btn btn-default">1</a>
-                            <a class="btn btn-default">2</a>
-                            <a class="btn btn-default">3</a>
-                            <a class="btn btn-default">下一页</a>
-                            <a class="btn btn-default">尾页</a>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+
+            <div class="col-md-9">
+                <div class="category-con-header">
+                    <p>当前所在位置:
+                        <span>&gt;</span>
+                        <a href="/">在线书城</a>
+                        <span>&gt;</span>
+                        <a>分类</a>
+                        <span>&gt;</span>
+                        <a><%= pname %></a>
+                        <span>&gt;</span>
+                        <a><%= cname %></a>
+                    </p>
+                </div>
+                <div class="category-con-con">
+                    <div class="panel panel-default">
+                        <div class="panel-heading content-full">
+                            <a data-pname="<%= pname %>" data-cname="<%= cname %>" data-cid="<%= cid %>"
+                               data-order_cnt="<%= order_cnt %>"
+                               id="order_cnt_sort">销量
+                                ↓</a>
+                            <a data-pname="<%= pname %>" data-cname="<%= cname %>" data-cid="<%= cid %>"
+                               data-price="<%= price %>" id="price_sort">价格 ↑</a>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="product-newest-group list-unstyled row content-full">
+                                <!--书籍列表-->
+                                <% for(var i = 0;i < BookData.length;i++){ %>
+                                <li class="product-newest-item col-md-2">
+                                    <div class="thumbnail">
+                                        <img src="./images/65465465.jpg" alt="...">
+                                        <div class="caption">
+                                            <h4 class="thumbnail-name"><%= BookData[i].name %></h4>
+                                            <span class="thumbnail-autor"><%= BookData[i].author_id.name %></span>
+                                            <span class="thumbnail-price">￥<%= BookData[i].price %></span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <% } %>
+                            </ul>
+                            <% if(totalPage > 1) { %>
+                            <div class="bs-page text-center">
+                                <a class="btn btn-default" href="javascript:;">共有<%= totalPage %>页</a>
+                                <a class="btn btn-default"
+                                   href="/category?pname=<%= pname %>&cname=<%= cname %>&cid=<%= cid %>&price=<%= price %>&page=1">首页</a>
+                                <a class="btn btn-default">上一页</a>
+                                <a class="btn btn-default">1</a>
+                                <a class="btn btn-default">2</a>
+                                <a class="btn btn-default">3</a>
+                                <a class="btn btn-default">下一页</a>
+                                <a class="btn btn-default">尾页</a>
+                            </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="push-footer"></div>
+    <div class="push-footer"></div>
 </div>
 
 <!--底部-->

@@ -114,64 +114,98 @@ const Home = {
      * 分类
      */
     category: (req, res, next) => {
+
         //分类列表
         //分类书籍（分页，销量，评分，时间）
-        let category_id = req.query.category_id;
+        let pname = req.query.pname;
+        let cname = req.query.cname;
+        let cid = req.query.cid;
+
         let order_cnt = req.query.order_cnt;
         let price = req.query.price;
+
         let count = 0;
         let limit = 12;
         let page = req.query.page ? req.query.page : 1;
         let totalPage = 0;
         let where = {};
         let sort = {};
-        if (category_id) {
-            where.category_id = category_id;
-        }
-        if (order_cnt) {
+        let categoryData = [];
+        if (order_cnt == 1) {
             sort.order_cnt = -1;
+        } else {
+            sort.order_cnt = 1;
         }
-        if (price) {
+        if (price == 1) {
             sort.price = 1;
+        } else {
+            sort.price = -1;
         }
-        const categoryFun = CategoryModel.find({category: {$ne: []}}).populate('category');
-        const BookCount = BookModel.find(where).count();
-        const BookFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort(sort); //推荐
-        Promise.all([categoryFun, BookCount, BookFun]).then(([categoryData, countData, BookData]) => {
-            count = countData;
-            totalPage = Math.ceil(count / limit);
-            res.render("category",
-                {
+        CategoryModel.find({category: {$ne: []}}).populate('category').then(doc => {
+            categoryData = doc;
+            where.category_id = cid ? cid : categoryData[0].category[0]._id;
+            if (!cid) {
+                cid = categoryData[0].category[0]._id;
+            }
+            if (!pname) {
+                pname = categoryData[0].name;
+            }
+            if (!cname) {
+                cname = categoryData[0].category[0].name;
+            }
+            const BookCount = BookModel.find(where).count();
+            const BookFun = BookModel.find(where).populate('author_id').skip((page - 1) * limit).limit(limit).sort(sort); //推荐
+            Promise.all([BookCount, BookFun]).then(([countData, BookData]) => {
+                count = countData;
+                totalPage = Math.ceil(count / limit);
+                res.render("category", {
                     title: "分类",
                     category: categoryData,
                     BookData: BookData,
                     totalPage: totalPage,
                     page: page,
-                    count: count
+                    count: count,
+                    pname: pname,
+                    cname: cname,
+                    cid: cid,
+                    price: price,
+                    order_cnt: order_cnt
                 });
-        }).catch(reject => {
+            }).catch(reject => {
+                res.json({
+                    status: 0,
+                    msg: '网络异常'
+                });
+            })
+        }).catch(err => {
             res.json({
                 status: 0,
-                msg: '获取失败！'
-            })
+                msg: '网络异常'
+            });
         });
+
     },
 
     /**
      * 排行
      */
     ranking: (req, res, next) => {
-
         //书籍列表（分页，畅销/新书）
-        let create_at = req.query.create_at;
+        let current = req.query.current;//当前位置
         let count = 0;
         let limit = 12;
         let page = req.query.page ? req.query.page : 1;
         let totalPage = 0;
         let sort = {};
-        sort.order_cnt = -1
-        if (create_at) {
+        if (!current) {
+            current = '畅销榜'
+        }
+        if (current == '畅销榜') {
+            sort.order_cnt = -1
+        }
+        if (current == '新书榜') {
             sort.create_at = -1;
+            sort.order_cnt = -1;
         }
         const rankCount = BookModel.find().count();
         const rankFun = BookModel.find().populate('author_id').skip((page - 1) * limit).limit(limit).sort(sort); //推荐
@@ -184,7 +218,8 @@ const Home = {
                     ranking: rankData,
                     totalPage: totalPage,
                     page: page,
-                    count: count
+                    count: count,
+                    current: current
                 });
         }).catch(reject => {
             res.json({
