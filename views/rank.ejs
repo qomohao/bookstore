@@ -61,13 +61,14 @@
                                 <li class="product-list-item col-md-12">
                                     <div class="media">
                                         <div class="media-left">
-                                            <a href="#">
+                                            <a href="/book?id=<%= ranking[i]._id %>">
                                                 <img class="media-object" src="./images/65465465.jpg" alt="...">
                                             </a>
                                         </div>
                                         <div class="media-body row">
                                             <div class="col-md-8">
-                                                <h4 class="media-name"><%= ranking[i].name %></h4>
+                                                <a href="/book?id=<%= ranking[i]._id %>"><h4
+                                                            class="media-name"><%= ranking[i].name %></h4></a>
                                                 <p class="media-meta">
                                                     <span><%= ranking[i].author_id.name %></span><span>￥<%= ranking[i].price %></span>
                                                 </p>

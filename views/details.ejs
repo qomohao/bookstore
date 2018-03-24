@@ -11,62 +11,7 @@
 </head>
 <body>
 <!--头部导航开始-->
-<div class="bs-nav">
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img src="./images/logo.jpg" alt="">
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav-main-link nav navbar-nav">
-                    <li class="active">
-                        <a href="#">首页</a>
-                    </li>
-                    <li><a href="#">分类</a></li>
-                    <li><a href="#">排行榜</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <div class="navbar-form">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="nav-search-btn">
-                                        <i class="glyphicon glyphicon-search"></i>
-                                    </span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-lr-link">
-                        <ol class="breadcrumb">
-                            <li><a href="#">登录</a></li>
-                            <li><a href="#">注册</a></li>
-                        </ol>
-                    </li>
-                    <li class="nav-bs-car">
-                        <a href="#">
-                            <span></span>
-                            <span>购物车</span>
-                            <span></span>
-                        </a>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-</div>
-<!--头部导航结束-->
+<%- include nav.ejs %>
 
 
 <div class="container bs-wrap">
@@ -77,11 +22,13 @@
                     <div class="details-header">
                         <p>当前所在位置:
                             <span>&gt;</span>
-                            <a>融智教育</a>
+                            <a href="/">网上书城</a>
+                            <% if(category){ %>
                             <span>&gt;</span>
-                            <a>诗词歌赋</a>
+                            <a href=""><%= category.name %></a>
                             <span>&gt;</span>
-                            <a href="#">纳兰词全集</a>
+                            <a href="#"><%=book.category_id.name%></a>
+                            <% } %>
                         </p>
                     </div>
                     <div class="details-content content-full">
@@ -91,10 +38,10 @@
                             </div>
                             <div class="col-md-9">
                                 <ul class="list-unstyled book-info">
-                                    <li><h4>纳兰词全集</h4></li>
-                                    <li>类别：<span>文学艺术</span></li>
-                                    <li>作者：<span>纳兰信德</span></li>
-                                    <li>版权提供：<span>纳兰信德</span></li>
+                                    <li><h4><%=book.name%></h4></li>
+                                    <li>类别：<span><%=book.category_id.name%></span></li>
+                                    <li>作者：<span><%=book.author_id.name%></span></li>
+                                    <li>版权提供：<span><%=book.author_id.name%></span></li>
                                     <li>
                                     <span class="count-input">
                                         <input type="text">
@@ -116,19 +63,19 @@
                             </div>
                             <div class="book-int-int">
                                 <div><h4>图书简介</h4></div>
-                                <p>图书简介图书简介图书简介图书简介图书简介图书简介图书简介图书简介图书简介</p>
+                                <p><%=book.content%></p>
                             </div>
                             <div class="book-int-info">
                                 <div><h4>基本信息</h4></div>
                                 <ul class="list-unstyled">
-                                    <li><span>类别：</span><span>类别</span></li>
-                                    <li><span>作者：</span><span>类别</span></li>
-                                    <li><span>版权提供：</span><span>类别</span></li>
+                                    <li><span>类别：</span><span><%=category.name%></span><span>&gt;</span><span><%=book.category_id.name%></span></li>
+                                    <li><span>作者：</span><span><%=book.author_id.name%></span></li>
+                                    <li><span>版权提供：</span><span><%=book.author_id.name%></span></li>
                                 </ul>
                             </div>
                             <div class="book-int-author">
                                 <div><h4>作者简介</h4></div>
-                                <p>图书简介图书简介图书简介图书简介图书简介图书简介图书简介图书简介图书简介</p>
+                                <p><%=book.author_id.content%></p>
                             </div>
                             <div class="book-int-com">
                                 <div><h4>图书评论</h4></div>

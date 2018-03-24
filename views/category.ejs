@@ -67,14 +67,15 @@
                         <div class="panel-body">
                             <ul class="product-newest-group list-unstyled row content-full">
                                 <!--书籍列表-->
-                                <% for(var i = 0;i < BookData.length;i++){ %>
+                                <% for(var i = 0;i < bookData.length;i++){ %>
                                 <li class="product-newest-item col-md-2">
                                     <div class="thumbnail">
-                                        <img src="./images/65465465.jpg" alt="...">
+                                        <a href="/book?id=<%= bookData[i]._id %>"><img src="./images/65465465.jpg" alt="..."></a>
                                         <div class="caption">
-                                            <h4 class="thumbnail-name"><%= BookData[i].name %></h4>
-                                            <span class="thumbnail-autor"><%= BookData[i].author_id.name %></span>
-                                            <span class="thumbnail-price">￥<%= BookData[i].price %></span>
+                                            <a href="/book?id=<%= bookData[i]._id %>"><h4
+                                                        class="thumbnail-name"><%= bookData[i].name %></h4></a>
+                                            <span class="thumbnail-autor"><%= bookData[i].author_id.name %></span>
+                                            <span class="thumbnail-price">￥<%= bookData[i].price %></span>
                                         </div>
                                     </div>
                                 </li>

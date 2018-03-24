@@ -62,14 +62,15 @@
                             <ul class="product-rec-group list-unstyled row content-full">
                                 <% for(var i = 0;i < recommend.length;i++){ %>
                                 <li class="product-rec-item col-xs-6">
+
                                     <div class="media">
                                         <div class="media-left">
-                                            <a href="#">
+                                            <a href="/book?id=<%= recommend[i]._id %>">
                                                 <img class="media-object" src="./images/65465465.jpg" alt="...">
                                             </a>
                                         </div>
                                         <div class="media-body">
-                                            <h4 class="media-heading"><%= recommend[i].name %></h4>
+                                            <a href="/book?id=<%= recommend[i]._id %>"><h4 class="media-heading"><%= recommend[i].name %></h4></a>
                                             <p class="media-author"><%= recommend[i].author_id.name %></p>
                                             <p class="media-contnet"><%= recommend[i].content %></p>
                                             <div class="media-footer">
@@ -99,9 +100,9 @@
                                 <% for(var i = 0;i < newest.length;i++){ %>
                                 <li class="product-newest-item col-xs-2">
                                     <div class="thumbnail">
-                                        <img src="./images/65465465.jpg" alt="...">
+                                        <a href="/book?id=<%= newest[i]._id %>"><img src="./images/65465465.jpg" alt="...">
                                         <div class="caption">
-                                            <h4 class="thumbnail-name"><%= newest[i].name %></h4>
+                                            <a href="/book?id=<%= newest[i]._id %>"> <h4 class="thumbnail-name"><%= newest[i].name %></h4></a>
                                             <span class="thumbnail-autor"><%= newest[i].author_id.name %></span>
                                             <span class="thumbnail-price"><%= newest[i].price %></span>
                                         </div>

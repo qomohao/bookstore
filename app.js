@@ -22,6 +22,7 @@ var home = require('./routes/home');
 var user = require("./routes/user");
 // 购物
 var shopping = require("./routes/shopping");
+var book = require("./routes/book");
 
 //实例化对象
 var app = express();
@@ -48,6 +49,7 @@ app.use(flash());
 app.use('/', home);
 app.use('/user', user);
 app.use('/shopping', shopping);
+app.use('/book', book);
 
 // 404处理
 app.use(function (req, res, next) {

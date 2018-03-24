@@ -67,6 +67,11 @@
     text-overflow: ellipsis;
 }
 
+.product-rec .product-rec-content .product-rec-group .product-rec-item .media .media-body a {
+    color: #555;
+    text-decoration: none;
+}
+
 .product-rec .product-rec-content .product-rec-group .product-rec-item .media .media-body .media-author {
     height: 25px;
     line-height: 25px;
@@ -152,6 +157,11 @@
 
 .product-newest .product-newest-content .product-newest-group .product-newest-item .thumbnail .caption {
     padding: 9px 0 0 0;
+}
+
+.product-newest .product-newest-content .product-newest-group .product-newest-item .thumbnail .caption a {
+    color: #555;
+    text-decoration: none;
 }
 
 .product-newest .product-newest-content .product-newest-group .product-newest-item .thumbnail .caption .thumbnail-name {

@@ -17,7 +17,7 @@
                 <ul class="list-unstyled pane-group">
                         <% for(var i = 0; i < locals.order_cnt.length; i++){ %>
                     <li class="pane-item">
-                        <a class="content-full">
+                        <a class="content-full" href="/book?id=<%= locals.order_cnt[i]._id %>">
                             <p class="pane-no"><%= i + 1 %></p>
                             <p class="pane-content">
                                 <span><%= locals.order_cnt[i].name %></span>
@@ -39,7 +39,7 @@
 
                     <% for(var i = 0;i < locals.newest.length;i++){ %>
                     <li class="pane-item">
-                        <a class="content-full">
+                        <a class="content-full" href="/book?id=<%= locals.newest[i]._id %>">
                             <p class="pane-no"><%= i + 1 %></p>
                             <p class="pane-content">
                                 <span><%= locals.newest[i].name %></span>

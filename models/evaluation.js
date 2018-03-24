@@ -10,39 +10,45 @@ const ObjectId = Schema.Types.ObjectId;
 const UserModel = require('./user');
 const BookModel = require('./book');
 const OrderModel = require('./order');
+const moment = require('moment');
 const EvaluationSchema = new Schema({
-    user_id: {
-        type: ObjectId,
-        ref: 'User'
-    },
-    book_id: {
-        type: ObjectId,
-        ref: 'Book'
-    },
-    order_id: {
-        type: ObjectId,
-        ref: 'Order'
-    },
-    content: {
-        type: String,
-        default: ''
-    },
-    score: {
-        type: Number,
-        default: 0
-    },
-    create_at: {
-        type: Date,
-        default: Date.now
-    },
-    update_at: {
-        type: Date,
-        default: Date.now
-    },
-    delete_at: {
-        type: Date,
-        default: null
-    }
-});
+        user_id: {
+            type: ObjectId,
+            ref: 'User'
+        },
+        book_id: {
+            type: ObjectId,
+            ref: 'Book'
+        },
+        order_id: {
+            type: ObjectId,
+            ref: 'Order'
+        },
+        content: {
+            type: String,
+            default: ''
+        },
+        score: {
+            type: Number,
+            default: 0
+        },
+        create_at: {
+            type: Date,
+            default: Date.now,
+            get: (val) => moment(val).format("YYYY-MM-DD , h:mm:ss")
+        },
+        update_at: {
+            type: Date,
+            default:
+            Date.now
+        }
+        ,
+        delete_at: {
+            type: Date,
+            default:
+                null
+        }
+    })
+;
 const Evaluation = mongoose.model('Evaluation', EvaluationSchema);
 module.exports = Evaluation;

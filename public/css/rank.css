@@ -63,6 +63,7 @@
     border-right: 2px solid #EF6668;
     color: #EF6668;
 }
+
 .rank-tab > li:first-child a:hover {
     background-color: #fff;
     border-right: 2px solid #ccc;
@@ -99,6 +100,11 @@
     padding-top: 30px;
     padding-bottom: 40px;
     border-bottom: 1px solid #ccc;
+}
+
+.product-list .product-list-content .product-list-group .product-list-item .media .media-body a {
+    color: #333;
+    text-decoration: none;
 }
 
 .product-list .product-list-content .product-list-group .product-list-item .media .media-body .media-name {

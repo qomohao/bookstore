@@ -161,7 +161,7 @@ const Home = {
             res.render("category", {
                 title: "图书分类",
                 category: categoryData,
-                BookData: BookData,
+                bookData: BookData,
                 pageInfo: pageInfo
             });
         }).catch(reject => {
