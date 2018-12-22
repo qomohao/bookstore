@@ -4,8 +4,8 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img src="/images/logo.jpg" alt="">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -30,18 +30,22 @@
                     </li>
                     <li class="nav-lr-link">
                         <ol class="breadcrumb">
+                            <% if(!locals.user) { %>
                             <li><a href="/user/login">登录</a></li>
                             <li><a href="/user/register">注册</a></li>
+                            <% } else{ %>
+                            <li><span>欢迎你，</span><a href="/user/personal" style="color: orangered"><%= locals.user.nickname.substring(0,6) %>...</a></li>
+                            <li><a href="/user/logout">退出</a></li>
+                            <% } %>
                         </ol>
                     </li>
                     <li class="nav-bs-car">
                         <a href="/shopping" class="nav-main-link">
-                            购物车 <span class="badge">0</span>
+                            购物车 <span class="badge" id="shopping_car_count">0</span>
                         </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-
 </div>

@@ -57,12 +57,12 @@
 .bs-nav .navbar-default .container .navbar-collapse .nav-main-link li a:hover,
 .bs-nav .navbar-default .container .navbar-collapse .nav-main-link li a:active {
     color: #fff;
-    background-color: #EE6668;
+    background-color: cornflowerblue;
 }
 
 .bs-nav .navbar-default .container .navbar-collapse .nav-main-link .active a {
     color: #fff;
-    background-color: #EE6668;
+    background-color: cornflowerblue;
 }
 
 .bs-nav .navbar-default .container .navbar-collapse .navbar-form {
@@ -152,20 +152,20 @@
 }
 
 .bs-nav .navbar-default .container .navbar-collapse li.active a {
-    color: #EF6668;
+    color: cornflowerblue;
 }
 
 .bs-nav .navbar-default .container .navbar-collapse li.active .badge {
-    background-color: #EF6668;
+    background-color: cornflowerblue;
 }
 
 .bs-nav .navbar-default .container .navbar-collapse li.active a:active,
 .bs-nav .navbar-default .container .navbar-collapse li.active a:hover {
-    color: #EF6668;
+    color:cornflowerblue;
 }
 
 .bs-nav .navbar-default .container .navbar-collapse .nav-main-link li.active a:hover,
 .bs-nav .navbar-default .container .navbar-collapse .nav-main-link li.active a:active {
     color: #fff;
-    background-color: #EE6668;
+    background-color: cornflowerblue;
 }

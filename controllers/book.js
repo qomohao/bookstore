@@ -19,7 +19,6 @@ const book = {
         let page = req.query.page ? req.query.page : 1;
         let totalPage = 0;
         let count = 0;
-
         let where = {};
         let bookWhere = {};
         let limit = 2;
@@ -28,7 +27,6 @@ const book = {
             where._id = id
             bookWhere.book_id = id;
         }
-
 
         BookModel.findOne(where).populate('author_id category_id').then(doc => {
             let bookData = doc;

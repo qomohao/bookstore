@@ -14,7 +14,7 @@ const login = {
             });
     },
     /**
-     * 登录
+     * 登录验证
      */
     login: (req, res, next) => {
         //邮箱
@@ -23,50 +23,54 @@ const login = {
         let email = req.body.email;
         let password = req.body.password;
         UserModel.findOne({email: email}).then(doc => {
-            if (doc) {
-                let user = doc;
+            let user = doc;
+            if (user) {
                 if (user.password == md5(password)) {
-                    res.session.user = user;
-                    res.json({
-                        status: 1,
-                        msg: '登录成功'
-                    });
+                    if(req.body.remember==1){
+                        res.cookie('user', user._id, {
+                            expires:new Date(Date.now()+(1000*60*60*24*7)),
+                            httpOnly:true
+                        })
+                    }
+                    // 用户名、密码验证通过  -- 用户数据存入session
+                    req.session.user = user;
+                    // 设置闪存信息
+                    req.flash("success", '登陆成功！');
+                    //登录成功后跳转到主页
+                    res.redirect('/');
                 } else {
-                    res.json({
-                        status: 0,
-                        msg: '密码错误'
-                    });
+                    req.flash("error", '密码错误！');
+                    res.redirect('/user/login');
                 }
             } else {
-                res.json({
-                    status: 0,
-                    msg: '用户不存在'
-                })
+                req.flash("error", '用户不存在！');
+                res.redirect('/user/login');
             }
         }).catch(err => {
             res.json({
                 status: 0,
                 msg: '网络异常'
             })
-        });
+        })
     },
     /**
      * 登出
      */
     logout: (req, res, next) => {
+        // 清空session
         req.session.destroy(err => {
             if (err) {
                 res.json({
-                    status: 0,
-                    msg: '退出失败！'
+                    status:0,
+                    msg:"退出失败"
                 });
             } else {
-                res.json({
-                    status: 1,
-                    msg: '退出成功！'
+                res.cookie("user","",{
+                    expires:new Date(Date.now()),
+                    httpOnly:true
                 });
             }
         });
     }
-}
+};
 module.exports = login;

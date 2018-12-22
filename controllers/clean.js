@@ -16,21 +16,6 @@ const clean = {
                 title: "确认支付",
                 // result:doc,
             })
-        // let book_id_arr = req.query.book_id_arr;
-        // let user = req.session.user;
-        //
-        // UserModel.find({user:user._id}).then(doc=>{
-        //     res.render("clean",
-        //         {
-        //         title: "确认支付",
-        //         result:doc,
-        //     })
-        // }).catch(err=>{
-        //     res.json({
-        //         status: 0,
-        //         msg: 'err'
-        //     })
-        // })
     }
 }
 module.exports = clean

@@ -22,20 +22,22 @@
         </div>
         <div class="row">
             <div class="login-con-left col-xs-6">
-                <form action="/user/login">
+                <form action="/user/register" method="post" onsubmit="return registersubmit()">
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" placeholder="请输入邮箱" name="email" id="emailregister">
+                        <div id="registeremail" style="color: red;text-align: right;"></div>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="text" class="form-control" placeholder="请输入密码"  name="password" id="passwordregister">
+                        <div id="registerpassword" style="color: red;text-align: right;"></div>
                     </div>
                     <div class="form-group">
-
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="text" class="form-control" placeholder="确认密码"  name="repassword" id="repasswordregister">
+                        <div id="registerrepassword" style="color: red;text-align: right;"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="请输入昵称"   name="nickname" id="nicknameregister">
+                        <div id="registernickname" style="color: red;text-align: right;"></div>
                     </div>
                     <div class="checkbox">
                         <label>
@@ -51,15 +53,56 @@
         </div>
 
     </div>
-    <div class="login-footer">
-        <p>ccsdcscscscscsccscscscsc</p>
-    </div>
+
 </div>
 
 
 <script src="/lib/jquery/jquery.min.js"></script>
 <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="/lib/layer/layer.js"></script>
+<script>
 
+    var error = "<%= locals.error %>";
+    var success = "<%= locals.success %>";
+
+    if(error){
+        layer.msg(error);
+    }
+    if(success){
+        layer.msg(success);
+    }
+    function registersubmit(){
+        var email=$("#emailregister").val();
+        var password=$("#passwordregister").val();
+        var repassword=$("#repasswordregister").val();
+        var nickname=$("#nicknameregister").val();
+        var ifsubmit=true;
+        if(email==""){
+            $("#registeremail").html("请输入邮箱！");
+            ifsubmit=false;
+        }else{
+            $("#registeremail").html("");
+        }
+        if(password==""){
+            $("#registerpassword").html("请输入密码！");
+            ifsubmit=false;
+        }else{
+            $("#registerpassword").html("");
+        }
+        if(repassword==""){
+            $("#registerrepassword").html("请再次输入密码！");
+            ifsubmit=false;
+        }else{
+            $("#registerrepassword").html("");
+        }
+        if(nickname==""){
+            $("#registernickname").html("请输入昵称！");
+            ifsubmit=false;
+        }else{
+            $("#registernickname").html("");
+        }
+        return ifsubmit;
+    }
+</script>
 </body>
 </html>

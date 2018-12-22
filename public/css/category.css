@@ -23,7 +23,7 @@
     border-top: 1px solid #ccc;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
-    background-color: #EF6668;
+    background-color: cornflowerblue;
     color: #fff;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .category-tab > li > ul > li > a:hover {
-    background-color: #EF6668;
+    background-color:cornflowerblue;
     color: #fff;
 }
 

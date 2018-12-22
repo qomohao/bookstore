@@ -5,7 +5,7 @@
 
 /*轮播图开始*/
 .bs-lunbo {
-    background-color: #696768;
+    /*background-color: #696768;*/
     margin-bottom: 30px;
 }
 
@@ -13,6 +13,12 @@
 
 }
 
+.leftRight {
+    width: 40px;
+    height: 100px;
+    margin-top: 150px;
+    display: none;
+}
 /*推荐好书*/
 .product-rec {
     margin-bottom: 30px;

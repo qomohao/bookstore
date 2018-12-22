@@ -14,6 +14,6 @@ router.get('/newest', ranking, home.newest);
 // 文章排行榜
 router.get('/recommend', ranking, home.recommend);
 // 文章搜索
-router.get('/search', home.search);
+router.get('/search',ranking, home.search);
 
 module.exports = router;

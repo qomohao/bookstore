@@ -17,7 +17,6 @@ const Home = {
         where.is_tui = 1;
         let sort = {};
         sort.create_at = -1;
-
         const slide = SlideModel.find();//幻灯
         const recommend = BookModel.find(where).populate('author_id').limit(rec_limit); //推荐
         const ad = AdModel.find();//广告
@@ -29,7 +28,7 @@ const Home = {
                 slide: slideData,
                 recommend: recommendData,
                 ad: adData,
-                newest: newestData
+                newest: newestData,
             });
         }).catch(err => {
             res.json({
@@ -256,7 +255,6 @@ const Home = {
             })
         });
     }
-}
-
+};
 
 module.exports = Home;

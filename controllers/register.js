@@ -1,4 +1,5 @@
-const UserModel = require('../models/user')
+const UserModel = require('../models/user');
+const md5 = require("md5");
 /**
  * 注册
  */
@@ -11,7 +12,6 @@ const register = {
             title: "注册页"
         });
     },
-    
     /**
      * 注册操作
      */
@@ -26,46 +26,37 @@ const register = {
         let nickname = req.body.nickname;
         let password = req.body.password;
         let repassword = req.body.repassword;
-        UserModel.find({email: email}).then(doc => {
-            if (doc) {
-                res.json({
-                    status: 0,
-                    msg: '邮箱已被使用'
-                });
+
+        UserModel.findOne({email: email}).then(doc => {
+            let user = doc;
+            if (user) {
+                // 设置闪存信息
+                req.flash("error", '该邮箱已被注册！');
+                //登录成功后跳转到主页
+                res.redirect('/user/register');
             } else {
                 if (password == repassword) {
-                    let usermodel = new UserModel({
+                    UserModel.create({
                         email: email,
                         nickname: nickname,
-                        password: password
-                    });
-                    usermodel.save().then(doc => {
-                        res.session.user = doc;
-                        res.json({
-                            status: 1,
-                            msg: '注册成功'
-                        });
+                        password: md5(password)
+                    }).then(doc => {
+                        req.session.user = doc;
+                        // 设置闪存信息
+                        req.flash("success", '注册成功,请登录！');
+                        // 注册成功后跳转到主页
+                        res.redirect('/');
                     }).catch(err => {
-                        res.json({
-                            status: 0,
-                            msg: '网络异常'
-                        });
+                        req.flash('error', '注册失败');
+                        res.redirect('/user/register');
                     });
-
                 }
                 else {
-                    res.json({
-                        status: 0,
-                        msg: '两次密码不一致'
-                    });
+                    req.flash("error", '两次密码不一致！');
+                    res.redirect('/user/register');
                 }
             }
-        }).catch(err => {
-            res.json({
-                status: 0,
-                msg: '网络异常'
-            })
-        });
+        })
     },
 }
 module.exports = register;

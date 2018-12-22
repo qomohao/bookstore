@@ -7,7 +7,13 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
+/**
+ * 全局中间件
+ */
+//Locals 全局信息
+const Locals=require("./middleware/locals");
 const use = require('./bootstarp/use');
+const remember = require('./middleware/user');
 
 //全局设置
 global.use = use;
@@ -44,6 +50,10 @@ app.use(session({
     saveUninitialized: true //初始化session时是否保存到存储
 }))
 app.use(flash());
+//locals 全局信息
+app.use(Locals);
+// 记住密码
+app.use(remember);
 
 //使用路由
 app.use('/', home);

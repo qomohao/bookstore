@@ -74,9 +74,12 @@
                                                 </p>
                                                 <p class="media-contnet"><%= ranking[i].content %></p>
                                             </div>
+
                                             <div class="col-md-4 media-body-right content-full">
-                                                <a href=""><i
-                                                            class="glyphicon glyphicon-copyright-mark"></i><span>加入购物车</span></a>
+                                                <a href="javascript:;" class="addcar"
+                                                   data-bookid="<%= ranking[i]._id %>"><i
+                                                            class="glyphicon glyphicon-copyright-mark"
+                                                    ></i><span>加入购物车</span></a>
                                                 <a href=""><i
                                                             class="glyphicon glyphicon-heart"></i><span>我的收藏</span></a>
                                             </div>
@@ -128,5 +131,23 @@
 <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="/lib/layer/layer.js"></script>
 <script src="/js/nav.js"></script>
+<script>
+    $('.addcar').on('click', function () {
+        var bookid = $(this).attr('data-bookid');
+        $.post('/shopping/addcar', {
+            book_id: bookid,
+            num: 1
+        }, function (data) {
+            if (data.status == 1) {
+                badgeCount();
+                layer.msg(data.msg);
+            } else {
+                layer.msg(data.msg);
+            }
+        });
+        return false;
+    })
+
+</script>
 </body>
 </html>

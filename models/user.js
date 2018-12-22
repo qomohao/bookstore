@@ -15,6 +15,10 @@ const UserSchema = new Schema({
         type: String,
         default: ''
     },
+    info:{
+      type:String,
+      default:"这个人很懒，什么也没留下。。。"
+    },
     nickname: {
         type: String,
         default: ''
@@ -24,8 +28,8 @@ const UserSchema = new Schema({
         default: ''
     },
     sex: {
-        type: Number,
-        default: 1
+        type: String,
+        default: '男'
     },
     phone: {
         type: String,
@@ -40,6 +44,7 @@ const UserSchema = new Schema({
             name: String,
             phone: String,
             address: String,
+            is_mo:Number
         }
     ],
     create_at: {

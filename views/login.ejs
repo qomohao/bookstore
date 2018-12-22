@@ -22,17 +22,18 @@
         </div>
         <div class="row">
             <div class="login-con-left col-xs-6">
-                <form action="/">
+                <form action="/user/login" method="post" onsubmit="return mysubmit()">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email">
+                        <div id="myemail" style="color: red;text-align: right;"></div>
                     </div>
                     <div class="form-group">
-
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                        <div id="mypassword" style="color: red;text-align: right;"></div>
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox"> 记住密码
+                            <input type="checkbox"  name="remember" value="1"> 记住密码
                         </label>
                     </div>
                     <button type="submit" class="btn btn-danger btn-block">登录</button>
@@ -53,6 +54,38 @@
 <script src="/lib/jquery/jquery.min.js"></script>
 <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="/lib/layer/layer.js"></script>
+<script>
+
+    var error = "<%= locals.error %>";
+    var success = "<%= locals.success %>";
+
+    if(error){
+        layer.msg(error);
+    }
+    if(success){
+        layer.msg(success);
+    }
+
+    function mysubmit(){
+        var email=$("#exampleInputEmail1").val();
+        var password=$("#exampleInputPassword1").val();
+        var ifsubmit=true;
+        if(email==""){
+            $("#myemail").html("请输入邮箱！");
+            ifsubmit=false;
+        }else{
+            $("#myemail").html("");
+        }
+        if(password==""){
+            $("#mypassword").html("请输入密码！");
+            ifsubmit=false;
+        }else{
+            $("#mypassword").html("");
+        }
+        return ifsubmit;
+    }
+
+</script>
 
 </body>
 </html>

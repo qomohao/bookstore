@@ -14,31 +14,21 @@ const ShoppingcarSchema = new Schema({
         type: ObjectId,
         ref: 'User'
     },
-    book: [
-        {
-            book_id: {
-                type: ObjectId,
-                ref: 'Book'
-            },
-            num: Number,
-            total_price: Number
-        }
-    ],
-    total_price: {
-        type: Number,
-        default: 0
+    book_id: {
+        type: ObjectId,
+        ref: 'Book'
     },
-    status: {
+    num: {
         type: Number,
-        default: 0
+        default: 1
     },
     create_at: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     update_at: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     delete_at: {
         type: Date,

@@ -29,71 +29,82 @@
                 <div class="car-wrap content-full">
                     <div><h4>我的购物车</h4></div>
                     <!--表格-->
-                    <table class="table table-striped">
-                        <tr>
-                            <td>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 全选
-                                    </label>
-                                </div>
-                            </td>
-                            <td>购买信息</td>
-                            <td>单价</td>
-                            <td>数量</td>
-                            <td>小计</td>
-                            <td>操作</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox">
-                                    </label>
-                                </div>
-                            </td>
-                            <td>
-                                <img src="./images/54654654.jpg" alt="">
-                                <p>小道德方寸之间</p>
-                            </td>
-                            <td>￥0.00</td>
-                            <td>
-                                <div class="input-group">
+                    <form action="/shopping/clean" method="post" id="cleanForm">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" class="allcheckbox"> 全选
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>购买信息</td>
+                                <td>单价</td>
+                                <td>数量</td>
+                                <td>小计</td>
+                                <td>操作</td>
+                            </tr>
+
+                            <% for(var i = 0;i < shoppingcar.length;i++) { %>
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" class="onlycheckbox" name="shopping_car"
+                                                   value="<%= shoppingcar[i]._id %>">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <img src="/images/54654654.jpg" alt="">
+                                    <p><%= shoppingcar[i].book_id.name %></p>
+                                </td>
+                                <td>￥<%= (shoppingcar[i].book_id.price / 100).toFixed(2) %></td>
+                                <td>
+                                    <div class="input-group">
                               <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">+</button>
+                                <button class="btn btn-default addbtn" type="button"
+                                        data-id="<%= shoppingcar[i].id %>"
+                                        data-bookid="<%= shoppingcar[i].book_id._id %>"
+                                        data-price="<%= shoppingcar[i].book_id.price %>">+</button>
                               </span>
-                                    <input type="text" maxlength="3" class="form-control" placeholder="1">
-                                    <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">-</button>
+                                        <input type="text" maxlength="3" class="form-control count"
+                                               value="<%= shoppingcar[i].num %>" disabled
+                                               id="price<%= shoppingcar[i]._id %>">
+                                        <span class="input-group-btn">
+                                    <button class="btn btn-default subbtn" type="button"
+                                            data-id="<%= shoppingcar[i]._id %>"
+                                            data-bookid="<%= shoppingcar[i].book_id._id %>"
+                                            data-price="<%= shoppingcar[i].book_id.price %>">-</button>
                               </span>
-                                </div>
-                            </td>
-                            <td>￥0.00</td>
-                            <td>删除</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> 全选
-                                    </label>
-                                </div>
-                            </td>
-                            <td> 删除选中图书</td>
-                            <td></td>
-                            <td></td>
-                            <td>共3本，合计3.00元</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                    <div class="pull-left">
-                        <a href="">再逛逛</a>
-                    </div>
-                    <div class="pull-right">
-                        <a href="/shopping/account">
-                            <button type="button" class="btn btn-danger">去结算</button>
-                        </a>
-                    </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    ￥<span class="sumPrice"
+                                           id="sum<%= shoppingcar[i]._id %>"><%= (shoppingcar[i].book_id.price * shoppingcar[i].num / 100).toFixed(2) %></span>
+                                </td>
+                                <td onclick="del(this,'<%= shoppingcar[i]._id %>')" style="cursor: pointer;color: red;">删除</td>
+                            </tr>
+                            <% } %>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td id="sum"></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <%if(shoppingcar.length!=0){%>
+                        <div class="pull-left">
+                            <a href="/">再逛逛</a>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-danger" onclick="formSubmit()">去结算</button>
+                        </div>
+                        <%}%>
+                    </form>
                 </div>
             </div>
         </div>
@@ -107,6 +118,104 @@
 <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="/lib/layer/layer.js"></script>
 <script src="/js/nav.js"></script>
-<script src="/js/shoppingcar.js"></script>
+<script>
+    //开始运行
+    $(function () {
+        sum();
+        //加一按钮
+        $('.addbtn').on('click', function () {
+            var id = $(this).attr('data-id')
+            var count = parseInt($("#price" + id).val());
+            count++;
+            $("#price" + id).val(count);
+            var book_id = $(this).attr("data-bookid");
+            countpost(book_id, 1);
+            let sumPrice = (count * parseInt($(this).attr('data-price')) / 100).toFixed(2);
+            $('#sum' + id).html(sumPrice);
+            sum();
+        });
+
+        //减一按钮
+        $('.subbtn').on('click', function () {
+            var id = $(this).attr('data-id');
+            var count = parseInt($("#price" + id).val());
+            var book_id = $(this).attr("data-bookid");
+            if (count > 1) {
+                count--;
+                countpost(book_id, -1);
+                let sumPrice = (count * parseInt($(this).attr('data-price')) / 100).toFixed(2);
+                $('#sum' + id).html(sumPrice);
+            }
+            else {
+                count = 1;
+            }
+            $("#price" + id).val(count);
+            sum();
+        })
+
+        //全选按钮
+        $(".allcheckbox").each(function () {
+            $(this).on('change', function () {
+                $('input[type="checkbox"]').prop('checked', $(this).is(':checked'));
+                sum();
+            });
+        });
+
+        //单个商品按钮
+        $('input[name="shopping_car"]').each(function () {
+            $(this).on('change', function () {
+                sum();
+            });
+        })
+
+    });
+
+    //数量提交
+    function countpost(book_id, num) {
+        $.post('/shopping/addcar', {book_id: book_id, num: num}, function (data) {
+            return;
+        })
+    }
+
+    //总价总量显示
+    function sum() {
+        var sumCount = 0;
+        var sumPrice = 0;
+        $('input[name="shopping_car"]').each(function () {
+            if ($(this).is(':checked')) {
+                var id = $(this).val();
+                var price = parseFloat($('#sum' + id).text());
+                sumPrice += price;
+                sumCount += parseInt($('#price' + id).val());
+            }
+        })
+        $("#sum").html("共" + sumCount + "本，合计" + sumPrice.toFixed(2) + "元")
+    }
+
+    //删除商品
+    function del(_this, id) {
+        $(_this).parents("tr").remove();
+        sum();
+        $.post('/shopping/delete', {id: id}, function (data) {
+            if (data.status == 1) {
+                badgeCount();
+                layer.msg(data.msg);
+            } else {
+                layer.msg(data.msg)
+            }
+        });
+    }
+
+    //提交
+    function formSubmit() {
+        if ($('input[name="shopping_car"]').is(':checked')) {
+            $("#cleanForm").submit();
+        } else {
+            layer.msg('亲，请选择您要购买的书籍。')
+        }
+    }
+
+
+</script>
 </body>
 </html>

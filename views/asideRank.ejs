@@ -23,7 +23,7 @@
                                 <span><%= locals.order_cnt[i].name %></span>
                                 <span><%= locals.order_cnt[i].author_id.name %></span>
                             </p>
-                            <p class="pane-price">￥<%= locals.order_cnt[i].price %></p>
+                            <p class="pane-price">￥<%= locals.order_cnt[i].price/100 %></p>
                         </a>
                     </li>
                     <% } %>
@@ -45,7 +45,7 @@
                                 <span><%= locals.newest[i].name %></span>
                                 <span><%= locals.newest[i].author_id.name %></span>
                             </p>
-                            <p class="pane-price">￥<%= locals.newest[i].price %></p>
+                            <p class="pane-price">￥<%= locals.newest[i].price/100 %></p>
                         </a>
                     </li>
                     <% } %>
